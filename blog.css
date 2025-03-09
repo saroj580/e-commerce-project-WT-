@@ -1,0 +1,111 @@
+/* Blog Section Styling */
+#blog-section {
+    background-image: url(../e-commerce-project-WT-/img/blog/b3.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    padding: 50px 20px;
+    color: white;
+    text-align: center;
+    position: relative;
+}
+
+/* Timeline Styling */
+.timeline {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    margin-top: 20px;
+}
+
+.timeline-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 80%;
+    max-width: 900px;
+    position: relative;
+}
+
+.timeline-item.left {
+    flex-direction: row;
+}
+
+.timeline-item.right {
+    flex-direction: row-reverse;
+}
+
+.timeline-item img {
+    width: 40%;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.timeline-item .content {
+    width: 55%;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.timeline-item .content p{
+    color: white;
+    font-size: 20px;
+}
+
+@media (max-width: 768px) {
+    .timeline-item {
+        flex-direction: column !important;
+        align-items: center;
+        text-align: center;
+    }
+
+    .timeline-item img {
+        width: 80%;
+    }
+
+    .timeline-item .content {
+        width: 90%;
+    }
+}
+
+/* recent blogs */
+.recent-blogs {
+    text-align: center;
+}
+
+.blog-card {
+    transition: transform 0.3s ease-in-out;
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.blog-card:hover {
+    transform: translateY(-5px);
+}
+
+.img-fluid {
+    width: 100%;
+    height: auto;
+}
+
+.btn-link{
+    color: #007bff;
+    text-decoration: none;
+}
+
+.btn-link:hover{
+    color: darkblue;
+    text-decoration: underline;
+}
+
+.btn-link:visited {
+    color: purple;
+}
+
+.posts{
+    height: 35%;
+}
