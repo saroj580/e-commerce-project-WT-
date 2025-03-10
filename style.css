@@ -89,15 +89,22 @@ body {
 #header{
   display : flex;
   align-items: center;
-  padding: 20px 80px;
+  padding: 20px 40px;
   background: #E3E6F3;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
   justify-content: space-between;
   position: sticky;
+  height: 80px;
   z-index: 999;
   top: 0;
   left: 0;
 }
+
+#header img{
+  top: 0;
+  width: 100px;
+  height: 100px;
+} 
 
 #navbar{
   display: flex;
@@ -139,7 +146,7 @@ body {
 
 /* hero section starts from here */
 #hero{
-  background-image: url("img/hero4.png");
+  background-image: url("img/hero1.webp");
   height: 90vh;
   width: 100%;
   background-size: cover;
@@ -253,6 +260,7 @@ body {
 
 #product1 .pro img{
   width: 100%;
+  height: 240px;
   border-radius : 20px;
 }
 
@@ -558,22 +566,22 @@ body {
   color: #222;
 }
 
-.top-section .cara{
+.top-section .lume{
   display: grid;
   gap: 5px;
 }
-.top-section .cara h4{
+.top-section .lume h4{
   font-size: 16px;
   color: #3d3e3d;
 }
 
-.top-section .cara a{
+.top-section .lume a{
   text-decoration: none;
   color: rgb(119, 116, 116);
   font-size: 12px;
 }
 
-.top-section .cara a:hover{
+.top-section .lume a:hover{
   text-decoration: underline;
   color: #222;
 }
