@@ -93,20 +93,27 @@ body {
     margin: 0;
 }
 
-/* header section styling start from here */
+
 #header{
-    width: 100%;
   display : flex;
+  width: 100%;
   align-items: center;
-  padding: 20px 80px;
+  padding: 20px 40px;
   background: #E3E6F3;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
   justify-content: space-between;
   position: sticky;
+  height: 80px;
   z-index: 999;
   top: 0;
   left: 0;
 }
+
+#header img{
+  top: 0;
+  width: 100px;
+  height: 100px;
+} 
 
 #navbar{
   display: flex;
@@ -152,7 +159,8 @@ body {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     text-align: center;
-    width: 350px;
+    width: 100vh;
+    height: 100%;
     margin-top: 50px;
 }
 
