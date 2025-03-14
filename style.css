@@ -52,7 +52,7 @@ p {
 
 @media (max-width: 768px) {
   .section-p1 {
-    padding: 20px 5px;
+    padding: 40px 40px;
   }
 }
 
@@ -60,11 +60,11 @@ p {
   margin: 20px 0;
 }
 
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   .section-m1 {
     margin: 10px 0;
   }
-}
+} */
 
 button.normal{
   font-size: 14px;
@@ -300,6 +300,15 @@ body {
     background-color: #fff2e5;
 }
 
+@media (max-width : 768px) {
+  #feature{
+    justify-content: center;
+  }
+  #feature .fe-box{
+    margin: 15px 15px;
+  }
+}
+
 
 /* Product styling start from here */
 #product1{
@@ -375,6 +384,15 @@ body {
   bottom: 15px;
 }
 
+@media (max-width : 768px) {
+  #product1 .pro-container{
+    justify-content: center;
+  }
+  #product1 .pro{
+    margin: 15px;
+  }
+}
+
 /* Advertisement styles start from here */
 #banner{
   display: flex;
@@ -407,6 +425,11 @@ body {
 #banner button:hover{
   background-color: #088178;
   color: #fff;
+}
+@media (max-width : 768px) {
+  #banner{
+    height: 20vh;
+  }
 }
 
 /*  */
@@ -457,6 +480,12 @@ body {
   color: #fff;
 }
 
+@media (max-width : 768px) {
+  #sm-banner .banner-box{
+    min-width: 100%;
+    height: 30vh;
+  }
+}
 /* another triplet banner system style start from here */
 
 #thriple-banner {
@@ -513,7 +542,6 @@ body {
   background-color: #088178;
   color: #fff;
 }
-
 /* newsLetter */
 #newsLetter{
   display: flex;
@@ -566,6 +594,11 @@ body {
   border-bottom-left-radius: 0;
 }
 
+@media (max-width : 768px) {
+  #newsLetter .form {
+    width: 70%;
+  }
+}
 /* Footer style start from here \ */
 #footer {
   margin-bottom: auto;
@@ -576,7 +609,7 @@ body {
   background-color: #edeaea7a;
   display: flex;
   justify-content: space-between;
-  padding: 30px 40px;
+  padding: 30px 20px;
 }
 
 .top-section .location{
@@ -709,4 +742,48 @@ body {
   width: 2px;
   height: 100px;
   background-color: #878383;
+}
+
+
+/* for the small screen device responsiveness */
+@media (max-width : 477px) {
+  .section-p1{
+    padding: 10px;
+  }
+  #header{
+    padding: 10px 30px;
+  }
+  h1 {
+    font-size: 38px;
+  }
+  h2 {
+    font-size: 32px;
+  }
+  #hero {
+    padding: 0 20px;
+    background-position: 55%;
+  }
+  #feature{
+    justify-content: center;
+  }
+  #feature .fe-box {
+    width: 155px;
+    margin: 15px ;
+  }
+
+  #product1 .pro {
+    width: 100%;
+  }
+  #banner {
+    height: 40vh;
+  }
+  #sm-banner .banner-box {
+    height: 40vh;
+  }
+  #sm-banner .banner-box2 {
+    margin-top: 20px;
+  }
+  .top-section {
+    padding: 10px;
+  }
 }
