@@ -1,0 +1,26 @@
+/* Responsive styles for thriple-banner */
+#thriple-banner {
+  overflow: hidden; 
+}
+
+#thriple-banner .banner-box {
+  padding: 10px; 
+}
+
+#thriple-banner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+#thriple-banner .banner-box {
+  flex: 1 1 30%; /* Allow boxes to grow and shrink, with a base width of 30% */
+  margin: 10px; /* Add some margin for spacing */
+  min-width: 250px; /* Set a minimum width for smaller screens */
+}
+
+@media (max-width: 768px) {
+  #thriple-banner .banner-box {
+    flex: 1 1 100%; /* Stack the boxes on smaller screens */
+  }
+}
