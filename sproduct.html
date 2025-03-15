@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,14 +10,219 @@
     </head>
 
     <body>
+        <section id="header">
+            <a href="#"><img src="img/logo1.png" alt="logo" class="logo"></a>
+            <div>
+                <ul id="navbar">
+                    <li><a class="active" href="index.html">Home</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li id="lg-bag"><a href="cart.html"><i class="fa-solid fa-bag-shopping"></i></a></li>
+                    <a href="#" id="close"><i class="fa-solid fa-xmark"></i></a>
+                </ul>
+            </div>
+            <div id="mobile">
+                <a href="cart.html"><i class="fa-solid fa-bag-shopping"></i></a>
+                <i id="bar" class="fas fa-outdent"></i>
+            </div>
+        </section>
+     
+        <section id="prodetails" class="section-p1">
+            <div class="single-pro-image">
+                <img src="img/products/f1.jpg" width="100%" id="mainImg" >
+                <div class="small-img-group">
+                    <div class="small-img-col">
+                        <img src="img/products/f1.jpg" width="100%" class="small-img" >
+                    </div>
+                    <div class="small-img-col">
+                        <img src="img/products/f2.jpg" width="100%" class="small-img" >
+                    </div>
+                    <div class="small-img-col">
+                        <img src="img/products/f3.jpg" width="100%" class="small-img" >
+                    </div>
+                    <div class="small-img-col">
+                        <img src="img/products/f4.jpg" width="100%" class="small-img" alt="">
+                    </div>
+                </div>
+            </div>
+            <!-- details of the product -->
+            <div class="single-pro-details">
+                <h6>Home / T-Shirt</h6>
+                <h4>Men's Fashion T Shirt</h4>
+                <h2>$139.00</h2>
+                <select>
+                    <option>Select size</option>
+                    <option>XL</option>
+                    <option>XXL</option>
+                    <option>Small</option>
+                    <option>Large</option>
+                </select>
+                <input type="number" value="1">
+                <button class="normal">Add To Cart</button>
+                <h4>Product Details</h4>
+                <span>The Gildan Ultra Cotton T-shirt is made from a substantial 6.0 oz. per sq. yd. fabric constructed from 100% cotton, this classic fit preshrunk jersey knit provides unmatched comfort with each wear. Featuring a taped neck and shoulder, and a seamless double-needle collar, and available in a range of colors, it offers it all in the ultimate head-turning package.</span>
+            </div>
+        </section>
 
+        <section id="product1" class="section-p1">
+            <h2>Featured Products</h2>
+            <p>Summer Collection new Morden Design</p>
+            <div class="pro-container">
+                <!-- 1st product -->
+                <div class="pro">
+                    <img src="img/products/n1.jpg" >
+                    <div class="des">
+                        <span>Uniqlo</span>
+                        <h5>Cartoon AstroNuts T-Shirts</h5>
+                        <div class="star">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h4>$110</h4>
+                    </div>
+                    <a href="#"><i class="fa-solid fa-bag-shopping cart"></i></a>
+                </div>
+                <!-- 2nd product -->
+                 <div class="pro">
+                    <img src="img/products/n2.jpg" >
+                    <div class="des">
+                        <span>Uniqlo</span>
+                        <h5>casual button-up shirts</h5>
+                        <div class="star">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h4>$111</h4>
+                    </div>
+                    <a href="#"><i class="fa-solid fa-bag-shopping cart"></i></a>
+                </div>
+
+                <!-- 3rd product  -->
+                 <div class="pro">
+                    <img src="img/products/n3.jpg" >
+                    <div class="des">
+                        <span>Uniqlo</span>
+                        <h5>casual button-up shirts</h5>
+                        <div class="star">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h4>$111</h4>
+                    </div>
+                    <a href="#"><i class="fa-solid fa-bag-shopping cart"></i></a>
+                </div>
+
+                <!-- 4th product -->
+                 <div class="pro">
+                    <img src="img/products/n4.jpg" >
+                    <div class="des">
+                        <span>Superdry</span>
+                        <h5>short-sleeved printed shirt</h5>
+                        <div class="star">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h4>$85</h4>
+                    </div>
+                    <a href="#"><i class="fa-solid fa-bag-shopping cart"></i></a>
+                </div>
+
+            </div>
+        </section>
+      
+        <section id="newsLetter" class="section-p1 section-m1">
+            <div class="newsText">
+                <h4>Sign Up for NewsLetter</h4>
+                <p>Get Email updates for our latest Shop and <span>Special Offers.</span></p>
+            </div>
+            <div class="form">
+                <input type="text" placeholder="your email address" >
+                <button class="normal">Sign Up</button>
+            </div>
+        </section>
+
+        <!-- Footer section -->
+        <section id="footer" class="section-m1">
+            <div class="top-section">
+                <div class="location">
+                    <h4>Popular location</h4>
+                    <a href="#">Kathmandu</a>
+                    <a href="#">Nepalgunj</a>
+                    <a href="#">Chitwan</a>
+                    <a href="#">Pokhara</a>
+                </div>
+                <div class="Trending-location">
+                    <h4>Trending location</h4>
+                    <a href="#">Birgunj</a>
+                    <a href="#">Rautahat</a>
+                    <a href="#">Biratnagar</a>
+                    <a href="#">jankapur</a>
+                </div>
+                <div class="about-us">
+                    <h4>About Us</h4>
+                    <a href="#">Tech@lume</a>
+                </div>
+
+                <div class="lume">
+                    <h4>lume</h4>
+                    <a href="#">Shop</a>
+                    <a href="#">Blog</a>
+                    <a href="#">Help</a>
+                    <a href="#">Location</a>
+                    <a href="#">Legal & provacy information</a>
+                </div>
+
+                <div class="follow-us">
+                    <h4>Follow Us</h4>
+                    <div class="icon">
+                        <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                        <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                    </div>
+                    <div class="img"></div>
+                </div>
+            </div>
+            <!-- bottom section -->
+            <div class="bottom-section">
+                <a href="#"><img src="img/logo1.png" alt=""></a>
+                <div class="straight"></div>
+            </div>
+        </section>
 
         <script>
-            // script for image change on click
-        </script>
+            const MainImg = document.getElementById("mainImg");
+            const SmallImg = document.getElementsByClassName("small-img");
 
+            SmallImg[0].onclick = function () {
+                MainImg.src = SmallImg[0].src;
+            }
+            SmallImg[1].onclick = function () {
+                MainImg.src = SmallImg[1].src;
+            }
+            SmallImg[2].onclick = function () {
+                MainImg.src = SmallImg[2].src;
+            }
+            SmallImg[3].onclick = function () {
+                MainImg.src = SmallImg[3].src;
+            }
+
+        </script>
 
         <script src="script.js"></script>
     </body>
-
 </html>
