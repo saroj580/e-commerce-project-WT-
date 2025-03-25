@@ -6,37 +6,289 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Lume-Ecommerce-About</title>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"/>
-
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+        <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="about.css">
     </head>
 
     <body>
+        <!-- navbar section -->
+        <section id="header">
+            <a href="#"><img src="img/logo1.png" alt="logo" class="logo"></a>
+            <div>
+                <ul id="navbar">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="about.html" class="active">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li id="lg-bag"><a href="cart.html"><i class="fa-solid fa-bag-shopping"></i></a></li>
+                    <a href="#" id="close"><i class="fa-solid fa-xmark"></i></a>
+                </ul>
+            </div>
+            <div id="mobile">
+                <a href="cart.html"><i class="fa-solid fa-bag-shopping"></i></a>
+                <i id="bar" class="fas fa-outdent"></i>
+            </div>
+        </section>
 
-        <section id="about-section">
-            <div class="section-content">
-                <div class="about-detail">
-                    <h2 class="section-title">About Us</h2>
-                    <p class="text">Welcome to our Ecommerce website, your one-stop destination for high-quality 
-                        [fashion, electronics and many more.]. 
-                        We are committed to providing you with the best products, exceptional customer service, and 
-                        a seamless shopping experience.
-                    </p>
-                    <div class="social-link-list">
-                        <a href="#" class="social-link"><i class="fa-brands fa-facebook"></i></a>
-                        <a href="#" class="social-link"><i class="fa-brands fa-linkedin"></i></a>
-                        <a href="#" class="social-link"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="#" class="social-link"><i class="fa-brands fa-x-twitter"></i></a>
+        <!-- About Hero Section -->
+        <section id="about-hero">
+            <h2>Who We Are</h2>
+            <p>Discover the story behind Lume - Where fashion meets convenience</p>
+        </section>
+
+        <!-- About Content Section -->
+        <section id="about-content" class="section-p1">
+            <div class="about-story">
+                <h2>Our Story</h2>
+                <p>Founded in 2025, Lume started with a simple mission: to make quality fashion accessible to everyone. What began as a small startup in Kathmandu has grown into a thriving online marketplace serving customers across Nepal.</p>
+                <p>We believe that looking good shouldn't cost a fortune. Our team works tirelessly to source the best products at competitive prices, ensuring that our customers always get exceptional value without compromising on quality.</p>
+                <p>As we've grown, our commitment to customer satisfaction has remained unwavering. Every decision we make is guided by our desire to create the best possible shopping experience for you.</p>
+                
+                <div class="about-milestones">
+                    <div class="milestone">
+                        <h3>2025</h3>
+                        <p>Lume was founded with just 4 team members and 50 products and within a 2 months we have reached 50,000 customers and expanded nationwide</p>
                     </div>
                 </div>
-                <div class="image-warper">
-                    <img src="img/about/about-us.jpeg" alt="about-us" class="about-image">
-                </div>
                 
+                <div class="about-vid">
+                    <video autoplay muted loop src="img/about/advertise/video.mp4"></video>
+                </div>
+            </div>
+
+            <!-- Mission, Vision, Values Section -->
+            <div class="mvv-container">
+                <div class="mvv-box">
+                    <i class="fas fa-bullseye"></i>
+                    <h3>Our Mission</h3>
+                    <p>To provide high-quality fashion at affordable prices, making style accessible to everyone regardless of budget. We aim to simplify the shopping experience through innovative technology and exceptional customer service.</p>
+                </div>
+                <div class="mvv-box">
+                    <i class="fas fa-eye"></i>
+                    <h3>Our Vision</h3>
+                    <p>To become Nepal's leading online fashion destination, known for our quality products, ethical practices, and customer-first approach. We envision a future where shopping is effortless, enjoyable, and sustainable.</p>
+                </div>
+                <div class="mvv-box">
+                    <i class="fas fa-heart"></i>
+                    <h3>Our Values</h3>
+                    <ul>
+                        <li><strong>Integrity:</strong> We are honest and transparent in all our dealings</li>
+                        <li><strong>Quality:</strong> We never compromise on the standard of our products</li>
+                        <li><strong>Innovation:</strong> We continuously seek new ways to improve</li>
+                        <li><strong>Sustainability:</strong> We are committed to ethical and eco-friendly practices</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Features Section -->
+        <section id="about-features" class="section-p1">
+            <div class="feature-box">
+                <i class="fas fa-shipping-fast"></i>
+                <h6>Free Shipping</h6>
+                <p>Free shipping on all orders over $100</p>
+            </div>
+            <div class="feature-box">
+                <i class="fas fa-clock"></i>
+                <h6>Timely Delivery</h6>
+                <p>Fast and reliable delivery service</p>
+            </div>
+            <div class="feature-box">
+                <i class="fas fa-tags"></i>
+                <h6>Special Offers</h6>
+                <p>Regular discounts and promotions</p>
+            </div>
+            <div class="feature-box">
+                <i class="fas fa-headset"></i>
+                <h6>Customer Support</h6>
+                <p>24/7 dedicated support team</p>
+            </div>
+            <div class="feature-box">
+                <i class="fas fa-shield-alt"></i>
+                <h6>Secure Payments</h6>
+                <p>Multiple secure payment options</p>
+            </div>
+        </section>
+
+        <!-- Why Choose Us Section -->
+        <section id="why-choose-us" class="section-p1">
+            <h2>Why Choose Lume?</h2>
+            <p>At Lume, we strive to provide an exceptional shopping experience that keeps our customers coming back. Here's what sets us apart:</p>
+            
+            <div class="choose-container">
+                <div class="choose-left">
+                    <div class="choose-item">
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <h4>Curated Collection</h4>
+                            <p>Our team of fashion experts carefully selects each item to ensure quality, style, and value.</p>
+                        </div>
+                    </div>
+                    <div class="choose-item">
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <h4>Hassle-Free Returns</h4>
+                            <p>Not satisfied? Return within 30 days for a full refund or exchange, no questions asked.</p>
+                        </div>
+                    </div>
+                    <div class="choose-item">
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <h4>Loyalty Program</h4>
+                            <p>Earn points with every purchase and unlock exclusive rewards and discounts.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="choose-right">
+                    <img src="img/shoppingExperience/shoppingexp.webp" alt="Shopping Experience">
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Circle Section -->
+        <section id="team-circle" class="section-p1">
+            <h2>Our Team in Circle</h2>
+            <p>Meet our experts in a more personal way</p>
+            
+            <div class="team-circle-container">
+                <div class="team-member-circle">
+                    <div class="member-image">
+                        <img src="img/about/s1.jpeg" alt="Saroj Chaudhary">
+                    </div>
+                    <h3>Saroj Chaudhary</h3>
+                    <p>Technical Support</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="team-member-circle">
+                    <div class="member-image">
+                        <img src="img/about/t1.jpeg" alt="Tenzin Jigme">
+                    </div>
+                    <h3>Tenzin Jigme</h3>
+                    <p>Customer Support</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="team-member-circle">
+                    <div class="member-image">
+                        <img src="img/about/r1.jpeg" alt="Rohan Yadav">
+                    </div>
+                    <h3>Rohan Yadav</h3>
+                    <p>Founder & CEO</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="team-member-circle">
+                    <div class="member-image">
+                        <img src="img/about/d1.jpg" alt="Deepak Jha">
+                    </div>
+                    <h3>Deepak Kumar Jha</h3>
+                    <p>Product Specialist</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter Section -->
+        <section id="newsLetter" class="section-p1 section-m1">
+            <div class="newsText">
+                <h4>Sign Up for NewsLetter</h4>
+                <p>Get Email updates for our latest Shop and <span>Special Offers.</span></p>
+            </div>
+            <div class="form">
+                <input type="text" placeholder="your email address">
+                <button class="normal">Sign Up</button>
+            </div>
+        </section>
+
+        <!-- Footer section -->
+        <section id="footer" class="section-m1">
+            <div class="top-section">
+                <div class="location">
+                    <h4>Popular location</h4>
+                    <a href="#">Kathmandu</a>
+                    <a href="#">Nepalgunj</a>
+                    <a href="#">Chitwan</a>
+                    <a href="#">Pokhara</a>
+                </div>
+                <div class="Trending-location">
+                    <h4>Trending location</h4>
+                    <a href="#">Birgunj</a>
+                    <a href="#">Rautahat</a>
+                    <a href="#">Biratnagar</a>
+                    <a href="#">jankapur</a>
+                </div>
+                <div class="about-us">
+                    <h4>About Us</h4>
+                    <a href="#">Tech@lume</a>
+                </div>
+
+                <div class="lume">
+                    <h4>lume</h4>
+                    <a href="#">Shop</a>
+                    <a href="#">Blog</a>
+                    <a href="#">Help</a>
+                    <a href="#">Location</a>
+                    <a href="#">Legal & privacy information</a>
+                </div>
+
+                <div class="follow-us">
+                    <h4>Follow Us</h4>
+                    <div class="icon">
+                        <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                        <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <!-- Copyright section -->
+            <div class="copyright">
+                <p>&copy; 2023, Lume - Ecommerce</p>
             </div>
         </section>
 
         <script src="script.js"></script>
+        <script>
+            // FAQ toggle functionality
+            document.addEventListener('DOMContentLoaded', function() {
+                const faqQuestions = document.querySelectorAll('.faq-question');
+                
+                faqQuestions.forEach(question => {
+                    question.addEventListener('click', () => {
+                        const answer = question.nextElementSibling;
+                        const icon = question.querySelector('i');
+                        
+                        // Toggle answer visibility
+                        if (answer.style.maxHeight) {
+                            answer.style.maxHeight = null;
+                            icon.classList.replace('fa-chevron-up', 'fa-chevron-down');
+                        } else {
+                            answer.style.maxHeight = answer.scrollHeight + 'px';
+                            icon.classList.replace('fa-chevron-down', 'fa-chevron-up');
+                        }
+                    });
+                });
+            });
+        </script>
     </body>
 
 </html>
