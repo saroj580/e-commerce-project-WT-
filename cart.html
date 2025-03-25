@@ -6,15 +6,313 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Lume-Ecommerce-Cart</title>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
         <link rel="stylesheet" href="style.css">
     </head>
 
     <body>
+        <!-- navbar section -->
+        <section id="header">
+            <a href="#"><img src="img/logo1.png" alt="logo" class="logo"></a>
+            <div>
+                <ul id="navbar">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li id="lg-bag"><a href="cart.html" class="active"><i class="fa-solid fa-bag-shopping"></i></a></li>
+                    <a href="#" id="close"><i class="fa-solid fa-xmark"></i></a>
+                </ul>
+            </div>
+            <div id="mobile">
+                <a href="cart.html"><i class="fa-solid fa-bag-shopping"></i></a>
+                <i id="bar" class="fas fa-outdent"></i>
+            </div>
+        </section>
 
+        <!-- Page Header -->
+        <section id="page-header" class="about-header">
+            <h2>#cart</h2>
+            <p>Add your coupon code & SAVE up to 70%!</p>
+        </section>
+
+        <!-- Cart Section -->
+        <section id="cart" class="section-p1">
+            <table width="100%">
+                <thead>
+                    <tr>
+                        <td>Remove</td>
+                        <td>Image</td>
+                        <td>Product</td>
+                        <td>Price</td>
+                        <td>Quantity</td>
+                        <td>Subtotal</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="cart-item">
+                        <td data-label="Remove"><a href="#" class="remove-item"><i class="fa-solid fa-xmark"></i></a></td>
+                        <td data-label="Image"><img src="img/products/f1.jpg" alt=""></td>
+                        <td data-label="Product">Cartoon Astronaut T-Shirts</td>
+                        <td data-label="Price" class="item-price">$118.19</td>
+                        <td data-label="Quantity"><input type="number" value="1" min="1" class="item-quantity"></td>
+                        <td data-label="Subtotal" class="item-subtotal">$118.19</td>
+                    </tr>
+                    <tr class="cart-item">
+                        <td data-label="Remove"><a href="#" class="remove-item"><i class="fa-solid fa-xmark"></i></a></td>
+                        <td data-label="Image"><img src="img/products/f2.jpg" alt=""></td>
+                        <td data-label="Product">Floral Summer Shirt</td>
+                        <td data-label="Price" class="item-price">$89.99</td>
+                        <td data-label="Quantity"><input type="number" value="1" min="1" class="item-quantity"></td>
+                        <td data-label="Subtotal" class="item-subtotal">$89.99</td>
+                    </tr>
+                    <tr class="cart-item">
+                        <td data-label="Remove"><a href="#" class="remove-item"><i class="fa-solid fa-xmark"></i></a></td>
+                        <td data-label="Image"><img src="img/products/n1.jpg" alt=""></td>
+                        <td data-label="Product">Stylish Casual Shirt</td>
+                        <td data-label="Price" class="item-price">$110.00</td>
+                        <td data-label="Quantity"><input type="number" value="1" min="1" class="item-quantity"></td>
+                        <td data-label="Subtotal" class="item-subtotal">$110.00</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Cart Add Section -->
+        <section id="cart-add" class="section-p1">
+            <div id="coupon">
+                <h3>Apply Coupon</h3>
+                <div>
+                    <input type="text" placeholder="Enter Your Coupon">
+                    <button class="normal">Apply</button>
+                </div>
+            </div>
+
+            <div id="subtotal">
+                <h3>Cart Totals</h3>
+                <table>
+                    <tr>
+                        <td>Cart Subtotal</td>
+                        <td id="cart-subtotal">$318.18</td>
+                    </tr>
+                    <tr>
+                        <td>Shipping</td>
+                        <td>Free</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Total</strong></td>
+                        <td><strong id="cart-total">$318.18</strong></td>
+                    </tr>
+                </table>
+                <button class="normal">Proceed to checkout</button>
+            </div>
+        </section>
+
+        <!-- Newsletter Section -->
+        <section id="newsLetter" class="section-p1 section-m1">
+            <div class="newsText">
+                <h4>Sign Up for NewsLetter</h4>
+                <p>Get Email updates for our latest Shop and <span>Special Offers.</span></p>
+            </div>
+            <div class="form">
+                <input type="text" placeholder="your email address">
+                <button class="normal">Sign Up</button>
+            </div>
+        </section>
+
+        <!-- Footer section -->
+        <section id="footer" class="section-m1">
+            <div class="top-section">
+                <div class="location">
+                    <h4>Popular location</h4>
+                    <a href="#">Kathmandu</a>
+                    <a href="#">Nepalgunj</a>
+                    <a href="#">Chitwan</a>
+                    <a href="#">Pokhara</a>
+                </div>
+                <div class="Trending-location">
+                    <h4>Trending location</h4>
+                    <a href="#">Birgunj</a>
+                    <a href="#">Rautahat</a>
+                    <a href="#">Biratnagar</a>
+                    <a href="#">jankapur</a>
+                </div>
+                <div class="about-us">
+                    <h4>About Us</h4>
+                    <a href="#">Tech@lume</a>
+                </div>
+
+                <div class="lume">
+                    <h4>lume</h4>
+                    <a href="#">Shop</a>
+                    <a href="#">Blog</a>
+                    <a href="#">Help</a>
+                    <a href="#">Location</a>
+                    <a href="#">Legal & privacy information</a>
+                </div>
+
+                <div class="follow-us">
+                    <h4>Follow Us</h4>
+                    <div class="icon">
+                        <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                        <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <!-- Copyright section -->
+            <div class="copyright">
+                <p>&copy; 2023, Lume - Ecommerce Template</p>
+            </div>
+        </section>
 
         <script src="script.js"></script>
-
+        <script>
+            // Function to update subtotals when quantity changes
+            document.addEventListener('DOMContentLoaded', function() {
+                // Get all quantity inputs
+                const quantityInputs = document.querySelectorAll('.item-quantity');
+                
+                // Add event listeners to each quantity input
+                quantityInputs.forEach(input => {
+                    input.addEventListener('change', updateSubtotal);
+                    input.addEventListener('input', updateSubtotal);
+                    
+                    // Add touch support for mobile
+                    input.addEventListener('touchend', function() {
+                        this.focus();
+                    });
+                });
+                
+                // Get all remove item buttons
+                const removeButtons = document.querySelectorAll('.remove-item');
+                
+                // Add event listeners to each remove button
+                removeButtons.forEach(button => {
+                    button.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        const cartItem = this.closest('.cart-item');
+                        
+                        // Add animation effect when removing
+                        cartItem.style.transition = 'all 0.3s ease';
+                        cartItem.style.opacity = '0';
+                        cartItem.style.transform = 'translateX(50px)';
+                        
+                        // Remove after animation completes
+                        setTimeout(() => {
+                            cartItem.remove();
+                            updateCartTotal();
+                        }, 300);
+                    });
+                });
+                
+                // Initial calculation
+                updateCartTotal();
+                
+                // Function to update subtotal for a single item
+                function updateSubtotal() {
+                    // Get the parent row (tr)
+                    const row = this.closest('.cart-item');
+                    
+                    // Get the price element and extract price value
+                    const priceElement = row.querySelector('.item-price');
+                    const price = parseFloat(priceElement.innerText.replace('$', ''));
+                    
+                    // Get the quantity value (ensure it's at least 1)
+                    const quantity = Math.max(1, parseInt(this.value) || 1);
+                    
+                    // Calculate subtotal
+                    const subtotal = price * quantity;
+                    
+                    // Update the subtotal element with animation
+                    const subtotalElement = row.querySelector('.item-subtotal');
+                    animateValue(subtotalElement, getNumericValue(subtotalElement.innerText), subtotal);
+                    
+                    // Update cart total
+                    updateCartTotal();
+                }
+                
+                // Function to update the overall cart total
+                function updateCartTotal() {
+                    let total = 0;
+                    
+                    // Get all subtotal elements
+                    const subtotalElements = document.querySelectorAll('.item-subtotal');
+                    
+                    // Sum up all subtotals
+                    subtotalElements.forEach(element => {
+                        total += parseFloat(element.innerText.replace('$', ''));
+                    });
+                    
+                    // Update cart subtotal with animation
+                    const cartSubtotal = document.getElementById('cart-subtotal');
+                    animateValue(cartSubtotal, getNumericValue(cartSubtotal.innerText), total);
+                    
+                    // Update cart total with animation
+                    const cartTotal = document.getElementById('cart-total');
+                    animateValue(cartTotal, getNumericValue(cartTotal.innerText), total);
+                }
+                
+                // Helper function to extract numeric value from price string
+                function getNumericValue(priceString) {
+                    return parseFloat(priceString.replace('$', '')) || 0;
+                }
+                
+                // Function to animate value changes
+                function animateValue(element, start, end) {
+                    // Duration of animation in ms
+                    const duration = 300;
+                    const startTime = performance.now();
+                    
+                    // Highlight effect
+                    element.style.transition = 'background-color 0.3s ease';
+                    element.style.backgroundColor = 'rgba(8, 140, 83, 0.1)';
+                    
+                    // Animation function
+                    function updateValue(timestamp) {
+                        const elapsed = timestamp - startTime;
+                        const progress = Math.min(elapsed / duration, 1);
+                        
+                        // Easing function
+                        const easeOutQuad = function(t) { return t * (2 - t); };
+                        const easedProgress = easeOutQuad(progress);
+                        
+                        // Calculate current value
+                        const current = start + (end - start) * easedProgress;
+                        
+                        // Update element
+                        element.innerText = '$' + current.toFixed(2);
+                        
+                        // Continue animation if not complete
+                        if (progress < 1) {
+                            requestAnimationFrame(updateValue);
+                        } else {
+                            // Remove highlight after animation completes
+                            setTimeout(() => {
+                                element.style.backgroundColor = 'transparent';
+                            }, 200);
+                        }
+                    }
+                    
+                    // Start animation
+                    requestAnimationFrame(updateValue);
+                }
+                
+                // Set minimum quantity to 1
+                quantityInputs.forEach(input => {
+                    input.addEventListener('blur', function() {
+                        if (this.value < 1 || !this.value) {
+                            this.value = 1;
+                            // Trigger update
+                            const event = new Event('change');
+                            this.dispatchEvent(event);
+                        }
+                    });
+                });
+            });
+        </script>
     </body>
 
 </html>
