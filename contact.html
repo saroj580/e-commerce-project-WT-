@@ -7,53 +7,228 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Lume-Ecommerce-Contact</title>
         <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"/>
-
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
         <link rel="stylesheet" href="contact.css">
         <link rel="stylesheet" href="style.css">
     </head>
 
     <body>
-
         <!-- navbar section -->
         <section id="header">
             <a href="#"><img src="img/logo1.png" alt="logo" class="logo"></a>
             <div>
                 <ul id="navbar">
-                    <li><a class="active" href="index.html">Home</a></li>
+                    <li><a href="index.html">Home</a></li>
                     <li><a href="shop.html">Shop</a></li>
                     <li><a href="blog.html">Blog</a></li>
                     <li><a href="about.html">About</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                    <li><a href="cart.html"><i class="fa-solid fa-bag-shopping"></i></i></i></a></li>
+                    <li><a href="contact.html" class="active">Contact</a></li>
+                    <li id="lg-bag"><a href="cart.html"><i class="fa-solid fa-bag-shopping"></i></a></li>
+                    <a href="#" id="close"><i class="fa-solid fa-xmark"></i></a>
                 </ul>
+            </div>
+            <div id="mobile">
+                <a href="cart.html"><i class="fa-solid fa-bag-shopping"></i></a>
+                <i id="bar" class="fas fa-outdent"></i>
             </div>
         </section>
 
+        <!-- Attractive contact intro section -->
+        <div class="contact-intro">
+            <div class="intro-content">
+                <h1>Connect With Us</h1>
+                <p>We'd love to hear from you! Whether you have a question about our products, need help with an order, or just want to say hello.</p>
+                <div class="intro-icons">
+                    <div class="intro-icon">
+                        <i class="fas fa-headset"></i>
+                        <span>24/7 Support</span>
+                    </div>
+                    <div class="intro-icon">
+                        <i class="fas fa-reply"></i>
+                        <span>Quick Response</span>
+                    </div>
+                    <div class="intro-icon">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Secure Communication</span>
+                    </div>
+                </div>
+            </div>
+        </div>
         
-        <div class="container">
-            <form class="contact-form">
-                <img src="https://cdn-icons-png.flaticon.com/128/893/893257.png" alt="Contact Icon" class="icon">
-                <h2>CONTACT US</h2>
-                <p>Please fill this form in a decent manner</p>
+        <div class="form-container">
+            <div class="tabs">
+                <div class="tab active" data-tab="contact">Contact Us</div>
+                <div class="tab" data-tab="login">Login</div>
+                <div class="tab" data-tab="signup">Sign Up</div>
+            </div>
+            
+            <!-- Contact Form -->
+            <div class="form-content active" id="contact-form">
+                <form class="contact-form">
+                    <div class="form-header">
+                        <i class="fas fa-envelope-open-text form-icon"></i>
+                        <h2>GET IN TOUCH</h2>
+                        <p>We'd love to hear from you, please fill out this form</p>
+                    </div>
 
-                <label for="name">Name</label>
-                <input type="text" id="name"  required>
+                    <div class="form-group">
+                        <label for="name"><i class="fas fa-user"></i> Name</label>
+                        <input type="text" id="name" placeholder="Your full name" required>
+                    </div>
 
-                <label for="email">E-Mail</label>
-                <input type="email" id="email" required>
+                    <div class="form-group">
+                        <label for="email"><i class="fas fa-envelope"></i> Email</label>
+                        <input type="email" id="email" placeholder="example@domain.com" required>
+                    </div>
 
-                <label for="message">Message</label>
-                <textarea id="message"rows="4" required></textarea>
+                    <div class="form-group">
+                        <label for="subject"><i class="fas fa-tag"></i> Subject</label>
+                        <input type="text" id="subject" placeholder="How can we help you?" required>
+                    </div>
 
-                <button type="submit">SUBMIT</button>
-            </form>
+                    <div class="form-group">
+                        <label for="message"><i class="fas fa-comment-alt"></i> Message</label>
+                        <textarea id="message" rows="4" placeholder="Type your message here..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-submit">SEND MESSAGE <i class="fas fa-paper-plane"></i></button>
+                </form>
+            </div>
+            
+            <!-- Login Form -->
+            <div class="form-content" id="login-form">
+                <form class="login-form">
+                    <div class="form-header">
+                        <i class="fas fa-user-circle form-icon"></i>
+                        <h2>LOGIN</h2>
+                        <p>Access your account</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="login-email"><i class="fas fa-envelope"></i> Email</label>
+                        <input type="email" id="login-email" placeholder="Your email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="login-password"><i class="fas fa-lock"></i> Password</label>
+                        <input type="password" id="login-password" placeholder="Your password" required>
+                    </div>
+
+                    <div class="form-options">
+                        <div class="remember-me">
+                            <input type="checkbox" id="remember">
+                            <label for="remember">Remember me</label>
+                        </div>
+                        <a href="#" class="forgot-password">Forgot password?</a>
+                    </div>
+
+                    <button type="submit" class="btn-submit">LOGIN <i class="fas fa-sign-in-alt"></i></button>
+                    
+                    <div class="social-login">
+                        <p>Or login with</p>
+                        <div class="social-icons">
+                            <a href="#" class="social-icon facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="social-icon google"><i class="fab fa-google"></i></a>
+                            <a href="#" class="social-icon twitter"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            
+            <!-- Signup Form -->
+            <div class="form-content" id="signup-form">
+                <form class="signup-form">
+                    <div class="form-header">
+                        <i class="fas fa-user-plus form-icon"></i>
+                        <h2>CREATE ACCOUNT</h2>
+                        <p>Join our community today</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="signup-name"><i class="fas fa-user"></i> Full Name</label>
+                        <input type="text" id="signup-name" placeholder="Your full name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="signup-email"><i class="fas fa-envelope"></i> Email</label>
+                        <input type="email" id="signup-email" placeholder="Your email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="signup-password"><i class="fas fa-lock"></i> Password</label>
+                        <input type="password" id="signup-password" placeholder="Create a password" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="signup-confirm"><i class="fas fa-lock"></i> Confirm Password</label>
+                        <input type="password" id="signup-confirm" placeholder="Confirm your password" required>
+                    </div>
+
+                    <div class="form-options">
+                        <div class="terms">
+                            <input type="checkbox" id="terms" required>
+                            <label for="terms">I agree to the <a href="#">Terms and Conditions</a></label>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-submit">SIGN UP <i class="fas fa-user-plus"></i></button>
+                    
+                    <div class="social-login">
+                        <p>Or sign up with</p>
+                        <div class="social-icons">
+                            <a href="#" class="social-icon facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="social-icon google"><i class="fab fa-google"></i></a>
+                            <a href="#" class="social-icon twitter"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
 
+        <section class="contact-details section-p1">
+            <div class="details">
+                <span>GET IN TOUCH</span>
+                <h2>Visit one of our agency locations or contact us today</h2>
+                <h3>Head Office</h3>
+                <div>
+                    <li>
+                        <i class="fas fa-map"></i>
+                        <p>56 Mandikatar, Kathmandu, Nepal</p>
+                    </li>
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <p>contact@lume.com</p>
+                    </li>
+                    <li>
+                        <i class="fas fa-phone-alt"></i>
+                        <p>+977 9812345678</p>
+                    </li>
+                    <li>
+                        <i class="fas fa-clock"></i>
+                        <p>Sunday to Friday: 9.00am to 21.00pm</p>
+                    </li>
+                </div>
+            </div>
+            <div class="map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3531.8608929712405!2d85.33492671503998!3d27.728028082783967!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb19f2f4b13e81%3A0xfd1e692bb2c9a35!2sMahakavi%20Marg%2C%20Kathmandu%2044600!5e0!3m2!1sen!2snp!4v1647962760250!5m2!1sen!2snp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </section>
+
+        <!-- Newsletter Section -->
+        <section id="newsLetter" class="section-p1 section-m1">
+            <div class="newsText">
+                <h4>Sign Up for NewsLetter</h4>
+                <p>Get Email updates for our latest Shop and <span>Special Offers.</span></p>
+            </div>
+            <div class="form">
+                <input type="text" placeholder="your email address">
+                <button class="normal">Sign Up</button>
+            </div>
+        </section>
 
         <!-- Footer section -->
-
         <section id="footer" class="section-m1">
             <div class="top-section">
                 <div class="location">
@@ -72,7 +247,7 @@
                 </div>
                 <div class="about-us">
                     <h4>About Us</h4>
-                    <a href="#">Tech@Cara</a>
+                    <a href="#">Tech@lume</a>
                 </div>
 
                 <div class="lume">
@@ -81,30 +256,45 @@
                     <a href="#">Blog</a>
                     <a href="#">Help</a>
                     <a href="#">Location</a>
-                    <a href="#">Legal & provacy information</a>
+                    <a href="#">Legal & privacy information</a>
                 </div>
 
                 <div class="follow-us">
                     <h4>Follow Us</h4>
-                    <div class="icon" >
+                    <div class="icon">
                         <a href="#"><i class="fa-brands fa-facebook"></i></a>
                         <a href="#"><i class="fa-brands fa-instagram"></i></a>
                         <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
                         <a href="#"><i class="fa-brands fa-linkedin"></i></a>
                     </div>
-                    <div class="img"></div>
                 </div>
             </div>
-
-            <!-- bottom section -->
-            <div class="bottom-section">
-                <a href="#"><img src="img/logo1.png" alt=""></a>
-                <div class="straight"></div>
-                
+            <!-- Copyright section -->
+            <div class="copyright">
+                <p>&copy; 2023, Lume - Ecommerce</p>
             </div>
-            
+        </section>
+
         <script src="script.js"></script>
+        <script>
+            // Tab switching functionality
+            const tabs = document.querySelectorAll('.tab');
+            const formContents = document.querySelectorAll('.form-content');
 
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    // Remove active class from all tabs and forms
+                    tabs.forEach(t => t.classList.remove('active'));
+                    formContents.forEach(form => form.classList.remove('active'));
+                    
+                    // Add active class to clicked tab
+                    tab.classList.add('active');
+                    
+                    // Show corresponding form
+                    const formId = tab.getAttribute('data-tab') + '-form';
+                    document.getElementById(formId).classList.add('active');
+                });
+            });
+        </script>
     </body>
-
 </html>
