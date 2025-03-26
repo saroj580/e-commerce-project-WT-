@@ -770,28 +770,6 @@ button.transparent{
   height: 100px;
 }
 
-/* Bottom section of the footer style start from here */
-.bottom-section{
-  background-color: #ccd1d0;
-  width: 100%;
-  display: flex;
-}
-.bottom-section a{
-  text-decoration: none;
-  font-size: 40px;
-}
-
-.bottom-section a img{
-  width: 150px;
-  height: 90px;
-}
-
-.bottom-section .straight{
-  width: 2px;
-  height: 100px;
-  background-color: #878383;
-}
-
 
 /* for the small screen device responsiveness */
 @media (max-width : 477px) {
