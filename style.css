@@ -139,6 +139,137 @@ button.transparent{
   color: #088c53;
 }
 
+/* Search bar styles */
+#search-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+#search-icon {
+  margin-left: 10px;
+  font-size: 18px;
+}
+
+.search-wrapper {
+  position: relative;
+}
+
+#search-input {
+  padding: 8px 12px;
+  border-radius: 20px;
+  border: 1px solid #e1e1e1;
+  outline: none;
+  width: 180px;
+  font-size: 14px;
+  background-color: #fff;
+  transition: all 0.3s ease;
+}
+
+#search-input:focus {
+  border-color: #088c53;
+  width: 220px;
+}
+
+#search-suggestions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 0 0 8px 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-height: 300px;
+  overflow-y: auto;
+  z-index: 1000;
+  display: none;
+}
+
+#search-suggestions.active {
+  display: block;
+}
+
+.suggestion-item {
+  padding: 10px 15px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.suggestion-item:hover {
+  background-color: #f9f9f9;
+}
+
+/* .suggestion-item img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  margin-right: 10px;
+  border-radius: 4px;
+} */
+
+.suggestion-item .product-info {
+  flex: 1;
+}
+
+.suggestion-item .product-name {
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 2px;
+}
+
+.suggestion-item .product-price {
+  font-size: 13px;
+  color: #088c53;
+  font-weight: 600;
+}
+
+/* Search results info */
+.search-results-info {
+  margin-bottom: 20px;
+  padding: 10px 15px;
+  background-color: #f8f9fa;
+  border-radius: 5px;
+  border-left: 4px solid #088c53;
+}
+
+.search-results-info p {
+  margin: 0;
+  color: #333;
+  font-weight: 500;
+}
+
+/* Responsive styles for search bar */
+@media (max-width: 768px) {
+  #search-container {
+    order: 3;
+    margin-bottom: 20px;
+  }
+  
+  #search-input {
+    width: 150px;
+  }
+  
+  #search-input:focus {
+    width: 180px;
+  }
+}
+
+@media (max-width: 477px) {
+  #search-container {
+    width: 100%;
+  }
+  
+  .search-wrapper {
+    width: 100%;
+  }
+  
+  #search-input, #search-input:focus {
+    width: 100%;
+  }
+}
+
 #navbar li a.active::after,
 #navbar li a:hover::after{
   content: "";
@@ -206,6 +337,7 @@ button.transparent{
     font-size: 24px;
   }
 }
+
 /* hero section starts from here */
 #hero{
   background-image: url("img/hero1.webp");
