@@ -9,6 +9,48 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="responsive-styles.css">
+        <style>
+            .user-account {
+                position: relative;
+            }
+            
+            .user-menu {
+                position: absolute;
+                top: 100%;
+                right: 0;
+                background: white;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+                width: 180px;
+                z-index: 1000;
+                border-radius: 4px;
+                display: none;
+            }
+            
+            .user-menu.active {
+                display: block;
+            }
+            
+            .user-menu a {
+                display: block;
+                padding: 10px 15px;
+                color: #1a1a1a;
+                transition: 0.3s;
+                font-size: 14px;
+            }
+            
+            .user-menu a:hover {
+                background: #e8f6ea;
+                color: #088178;
+            }
+            
+            .user-icon {
+                cursor: pointer;
+            }
+            
+            #navbar li:last-child {
+                margin-right: 0;
+            }
+        </style>
     </head>
 
     <body>
@@ -30,6 +72,12 @@
                         <a href="#" id="search-icon"><i class="fa-solid fa-magnifying-glass"></i></a>
                     </li>
                     <li id="lg-bag"><a href="cart.html"><i class="fa-solid fa-bag-shopping"></i></a></li>
+                    <li class="user-account">
+                        <a href="#" class="user-icon"><i class="fa-solid fa-user"></i></a>
+                        <div id="user-menu" class="user-menu">
+                            <!-- Menu items will be loaded dynamically -->
+                        </div>
+                    </li>
                     <a href="#" id="close"><i class="fa-solid fa-xmark"></i></a>
                 </ul>
             </div>
@@ -79,365 +127,33 @@
         <!-- Products 1 section -->
         <section id="product1" class="section-p1">
             <h2>Featured Products</h2>
-            <p>Summer Collection new Morden Design</p>
+            <p>Summer Collection new Modern Design</p>
             <div class="pro-container">
-                <!-- 1st product -->
-                <div class="pro">
-                    <img src="img/products/t1.jpeg" >
-                    <div class="des">
-                        <span>adidas</span>
-                        <h5>Blank T-Shirt</h5>
-                        <div class="star">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <h4>$100</h4>
-                    </div>
-                    <a href="#"><i class="fa-solid fa-bag-shopping cart"></i></a>
-                </div>
-                <!-- 2nd product -->
-                 <div class="pro">
-                    <img src="img/products/t2.jpg" >
-                    <div class="des">
-                        <span>meesho</span>
-                        <h5>Stylish Black Polyester Tshirt</h5>
-                        <div class="star">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <h4>$97</h4>
-                    </div>
-                    <a href="#"><i class="fa-solid fa-bag-shopping cart"></i></a>
-                </div>
-
-                <!-- 3rd product  -->
-                 <div class="pro">
-                    <img src="img/products/t3.webp" >
-                    <div class="des">
-                        <span>leriya</span>
-                        <h5>Men's Plain Casual Half Sleeve T-Shirt</h5>
-                        <div class="star">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <h4>$120</h4>
-                    </div>
-                    <a href="#"><i class="fa-solid fa-bag-shopping cart"></i></a>
-                </div>
-
-                <!-- 4th product -->
-                 <div class="pro">
-                    <img src="img/products/f4.jpg" >
-                    <div class="des">
-                        <span>adidas</span>
-                        <h5>Cartoon AstroNuts T-Shirts</h5>
-                        <div class="star">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <h4>$78</h4>
-                    </div>
-                    <a href="#"><i class="fa-solid fa-bag-shopping cart"></i></a>
-                </div>
-
-                <!-- 5th product -->
-                 <div class="pro">
-                    <img src="img/products/t4.webp" >
-                    <div class="des">
-                        <span>DNMX</span>
-                        <h5>Men's Patterned Relaxed Fit Shirt</h5>
-                        <div class="star">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <h4>$134</h4>
-                    </div>
-                    <a href="#"><i class="fa-solid fa-bag-shopping cart"></i></a>
-                </div>
-
-                <!-- 6th product -->
-                 <div class="pro">
-                    <img src="img/products/t5.jpg" >
-                    <div class="des">
-                        <span>classy</span>
-                        <h5>Man Casual Shirt</h5>
-                        <div class="star">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <h4>$76</h4>
-                    </div>
-                    <a href="#"><i class="fa-solid fa-bag-shopping cart"></i></a>
-                </div>
-
-                <!-- 7th product -->
-                 <div class="pro">
-                    <img src="img/products/f7.jpg" >
-                    <div class="des">
-                        <span>Zara</span>
-                        <h5>linen pants with floral embroidery</h5>
-                        <div class="star">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <h4>$174</h4>
-                    </div>
-                    <a href="#"><i class="fa-solid fa-bag-shopping cart"></i></a>
-                </div>
-
-                <!-- 8th product -->
-                 <div class="pro">
-                    <img src="img/products/f8.jpg" >
-                    <div class="des">
-                        <span>Shein</span>
-                        <h5>V-neck blouse with a cat print</h5>
-                        <div class="star">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <h4>$150</h4>
-                    </div>
-                    <a href="#"><i class="fa-solid fa-bag-shopping cart"></i></a>
-                </div>
+                <!-- Products will be loaded dynamically via API -->
+                <div class="loading-spinner">Loading products...</div>
             </div>
         </section>
-
-        <!-- advertisement section -->
-         <section id="banner" class="section-m1">
-            <h4>Repair Services</h4>
-            <h2>Upto <span>70% Off</span> - All Accessories</h2>
-            <button class="normal">Explore More</button>
-
-        </section>
-
-        <!-- New Arrival section -->
-        <section id="product1" class="section-p1">
-            <h2>New Arrival</h2>
-            <p>Summer Collection new Morden Design</p>
-            <div class="pro-container">
-                <!-- 1st product -->
-                <div class="pro">
-                    <img src="img/products/n1.jpg" >
-                    <div class="des">
-                        <span>Uniqlo</span>
-                        <h5>Cartoon AstroNuts T-Shirts</h5>
-                        <div class="star">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <h4>$110</h4>
-                    </div>
-                    <a href="#"><i class="fa-solid fa-bag-shopping cart"></i></a>
-                </div>
-                <!-- 2nd product -->
-                 <div class="pro">
-                    <img src="img/products/n2.jpg" >
-                    <div class="des">
-                        <span>Uniqlo</span>
-                        <h5>casual button-up shirts</h5>
-                        <div class="star">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <h4>$111</h4>
-                    </div>
-                    <a href="#"><i class="fa-solid fa-bag-shopping cart"></i></a>
-                </div>
-
-                <!-- 3rd product  -->
-                 <div class="pro">
-                    <img src="img/products/n3.jpg" >
-                    <div class="des">
-                        <span>Uniqlo</span>
-                        <h5>casual button-up shirts</h5>
-                        <div class="star">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <h4>$111</h4>
-                    </div>
-                    <a href="#"><i class="fa-solid fa-bag-shopping cart"></i></a>
-                </div>
-
-                <!-- 4th product -->
-                 <div class="pro">
-                    <img src="img/products/n4.jpg" >
-                    <div class="des">
-                        <span>Superdry</span>
-                        <h5>short-sleeved printed shirt</h5>
-                        <div class="star">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <h4>$85</h4>
-                    </div>
-                    <a href="#"><i class="fa-solid fa-bag-shopping cart"></i></a>
-                </div>
-
-                <!-- 5th product -->
-                 <div class="pro">
-                    <img src="img/products/n5.jpg" >
-                    <div class="des">
-                        <span>Bahama</span>
-                        <h5>Jeans Shirts</h5>
-                        <div class="star">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <h4>$150</h4>
-                    </div>
-                    <a href="#"><i class="fa-solid fa-bag-shopping cart"></i></a>
-                </div>
-
-                <!-- 6th product -->
-                 <div class="pro">
-                    <img src="img/products/n6.jpg" >
-                    <div class="des">
-                        <span>H&M</span>
-                        <h5>shorts</h5>
-                        <div class="star">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <h4>$124</h4>
-                    </div>
-                    <a href="#"><i class="fa-solid fa-bag-shopping cart"></i></a>
-                </div>
-
-                <!-- 7th product -->
-                 <div class="pro">
-                    <img src="img/products/n7.jpg" >
-                    <div class="des">
-                        <span>Levi's</span>
-                        <h5>brown utility-style jacket</h5>
-                        <div class="star">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <h4>$115</h4>
-                    </div>
-                    <a href="#"><i class="fa-solid fa-bag-shopping cart"></i></a>
-                </div>
-
-                <!-- 8th product -->
-                 <div class="pro">
-                    <img src="img/products/n8.jpg" >
-                    <div class="des">
-                        <span>Zara</span>
-                        <h5>Mandarin Collar Short-Sleeve Shirt</h5>
-                        <div class="star">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <h4>$135</h4>
-                    </div>
-                    <a href="#"><i class="fa-solid fa-bag-shopping cart"></i></a>
-                </div>
-            </div>
-        </section>
-
-        <!-- another advertisement section -->
-         <section id="sm-banner" class="section-p1">
-            <div class="banner-box">
-                <h4>Crazy deals</h4>
-                <h2>Buy 1 get 1 free</h2>
-                <span>The best classic dresses are now on sale at lume. <br>Don't miss out!</span>
-                <button class="transparent">Shop Now</button>
-            </div>
-            <div class="banner-box banner-box2">
-                <h4>sprin/summer</h4>
-                <h2>New Season, Fresh Styles!</h2>
-                <span>Explore our latest spring <br> and summer collection with trendy must-haves.</span>
-                <button class="transparent">Discover Collection</button>
-            </div>
-         </section>
         
-        <!-- another advertisement section -->
-         <section id="thriple-banner" class="section-p1">
-            <div class="banner-box">
-                <h4>Winter</h4>
-                <h2>Winter Wonders Await!.</h2>
-                <span>Stay cozy and stylish with our newest winter fashion trends.</span>
-                <button class="transparent">Shop Winter</button>
-            </div>
+        <!-- Banner section -->
+        <section id="banner" class="section-m1">
+            <h4>Repair Services</h4>
+            <h2>Up to <span>70% Off</span> - All t-Shirts & Accessories</h2>
+            <button class="normal">Explore More</button>
+        </section>
 
-            <div class="banner-box banner-box3">
-                <h4>Winter</h4>
-                <h2>Elegance in Every Season!</h2>
-                <span> Discover timeless winter fashion that blends warmth with sophistication. Stay stylish, stay cozy!</span>
-                <button class="transparent">Explore Now</button>
-            </div>
-
-            <div class="banner-box banner-box4">
-                <h4>Winter</h4>
-                <h2>Cozy Reads, Cozy Feels!</h2>
-                <span>Snuggle up with a good book and the perfect winter wardrobe</span>
-                <button class="transparent">Learn More</button>
-            </div>
-         </section>
-
-         <!-- newsletter -->
-          <section id="newsLetter" class="section-p1 section-m1">
+        <!-- Newsletter Section -->
+        <section id="newsLetter" class="section-p1 section-m1">
             <div class="newsText">
                 <h4>Sign Up for NewsLetter</h4>
                 <p>Get Email updates for our latest Shop and <span>Special Offers.</span></p>
             </div>
             <div class="form">
-                <input type="text" placeholder="your email address" >
+                <input type="text" placeholder="your email address">
                 <button class="normal">Sign Up</button>
             </div>
-          </section>
+        </section>
 
         <!-- Footer section -->
-
         <section id="footer" class="section-m1">
             <div class="top-section">
                 <div class="location">
@@ -465,7 +181,7 @@
                     <a href="#">Blog</a>
                     <a href="#">Help</a>
                     <a href="#">Location</a>
-                    <a href="#">Legal & provacy information</a>
+                    <a href="#">Legal & privacy information</a>
                 </div>
 
                 <div class="follow-us">
@@ -476,14 +192,129 @@
                         <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
                         <a href="#"><i class="fa-brands fa-linkedin"></i></a>
                     </div>
-                    <div class="img"></div>
                 </div>
             </div>
-            <!-- copyright section -->
+            <!-- Copyright section -->
             <div class="copyright">
                 <p>&copy; 2025, Lume - Ecommerce</p>
             </div>
-         </section>
+        </section>
+
         <script src="script.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                // Setup user menu functionality
+                setupUserMenu();
+                
+                // Setup featured products section
+                loadFeaturedProducts();
+                
+                // Button to shop page
+                document.querySelector('#hero button').addEventListener('click', function() {
+                    window.location.href = 'shop.html';
+                });
+                
+                document.querySelector('#banner button').addEventListener('click', function() {
+                    window.location.href = 'shop.html';
+                });
+            });
+            
+            // Function to set up user menu
+            function setupUserMenu() {
+                const userIcon = document.querySelector('.user-icon');
+                const userMenu = document.getElementById('user-menu');
+                
+                // Toggle menu on click
+                userIcon.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    userMenu.classList.toggle('active');
+                });
+                
+                // Close menu when clicking outside
+                document.addEventListener('click', function(e) {
+                    if (!e.target.closest('.user-account')) {
+                        userMenu.classList.remove('active');
+                    }
+                });
+                
+                // Check if user is logged in
+                const token = localStorage.getItem('userToken');
+                const userData = JSON.parse(localStorage.getItem('userData') || '{}');
+                
+                // Update menu based on login status
+                if (token) {
+                    userMenu.innerHTML = `
+                        <a href="profile.html"><i class="fa-solid fa-user-circle"></i> My Profile</a>
+                        <a href="orders.html"><i class="fa-solid fa-box"></i> My Orders</a>
+                        ${userData.isAdmin ? '<a href="admin-dashboard.html"><i class="fa-solid fa-gauge"></i> Admin Dashboard</a>' : ''}
+                        <a href="#" id="logout"><i class="fa-solid fa-sign-out-alt"></i> Logout</a>
+                    `;
+                    
+                    // Add logout functionality
+                    document.getElementById('logout').addEventListener('click', function(e) {
+                        e.preventDefault();
+                        localStorage.removeItem('userToken');
+                        localStorage.removeItem('userData');
+                        window.location.reload();
+                    });
+                } else {
+                    userMenu.innerHTML = `
+                        <a href="login.html"><i class="fa-solid fa-sign-in-alt"></i> Login</a>
+                        <a href="register.html"><i class="fa-solid fa-user-plus"></i> Register</a>
+                    `;
+                }
+            }
+            
+            // Function to load featured products
+            async function loadFeaturedProducts() {
+                const container = document.querySelector('.pro-container');
+                
+                try {
+                    const response = await fetch('http://localhost:5050/api/products?limit=8');
+                    
+                    if (!response.ok) {
+                        throw new Error('Failed to fetch products');
+                    }
+                    
+                    const data = await response.json();
+                    
+                    // Clear loading message
+                    container.innerHTML = '';
+                    
+                    // Display products
+                    if (data.products && data.products.length > 0) {
+                        data.products.forEach(product => {
+                            const productDiv = document.createElement('div');
+                            productDiv.className = 'pro';
+                            productDiv.innerHTML = `
+                                <img src="${product.image}" alt="${product.name}">
+                                <div class="des">
+                                    <span>${product.brand}</span>
+                                    <h5>${product.name}</h5>
+                                    <div class="star">
+                                        ${getStarRating(product.rating)}
+                                    </div>
+                                    <h4>$${product.price}</h4>
+                                </div>
+                                <a href="#" class="add-to-cart" data-id="${product._id}"><i class="fa-solid fa-bag-shopping cart"></i></a>
+                            `;
+                            
+                            productDiv.addEventListener('click', (e) => {
+                                if (!e.target.closest('.add-to-cart')) {
+                                    window.location.href = `sproduct.html?id=${product._id}`;
+                                }
+                            });
+                            
+                            container.appendChild(productDiv);
+                        });
+                    } else {
+                        container.innerHTML = '<p>No products found</p>';
+                    }
+                } catch (error) {
+                    console.error('Error loading products:', error);
+                    container.innerHTML = '<p>Failed to load products. Please try again later.</p>';
+                }
+            }
+        </script>
     </body>
 </html>

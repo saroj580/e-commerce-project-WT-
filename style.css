@@ -61,11 +61,6 @@ p {
   margin: 20px 0;
 }
 
-/* @media (max-width: 768px) {
-  .section-m1 {
-    margin: 10px 0;
-  }
-} */
 
 button.normal{
   font-size: 14px;
@@ -122,15 +117,31 @@ button.transparent{
 
 #navbar li{
   list-style: none;
-  padding: 0 10px;
+  padding: 0 20px;
   position: relative;
+}
+
+#navbar li.user-account {
+  display: flex;
+  align-items: center;
+}
+
+#navbar li.user-account a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#navbar li.user-account #logout {
+  margin-left: 5px;
+  font-size: 18px;
 }
 
 #navbar li a{
   text-decoration: none;
-  color: rgb(59, 57, 57);
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 600;
+  color: #1a1a1a;
   transition: 0.3s ease;
 }
 
@@ -281,10 +292,6 @@ button.transparent{
   left: 20px;
 }
 
-#mobile{
-  display: none;
-  align-items: center;
-}
 
 #close{
   display: none;
@@ -312,15 +319,6 @@ button.transparent{
   }
   #navbar li{
     margin-bottom: 35px;
-  }
-  #mobile{
-    display: flex;
-    align-items: center;
-  }
-  #mobile i{
-    color: #1a1a1a;
-    font-size: 24px;
-    padding-left: 20px;
   }
 
   #lg-bag{
@@ -675,7 +673,7 @@ button.transparent{
   justify-content: center;
   align-items: flex-start;
   background-image: url("img/banner/b16.jpg");
-  width: calc(33.33% - 20px); /* Ensure equal width with spacing */
+  width: calc(33.33% - 20px);
   height: 50vh;
   background-size: cover;
   background-position: center;

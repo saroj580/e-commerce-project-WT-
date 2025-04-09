@@ -25,12 +25,19 @@
                     <li><a href="blog.html">Blog</a></li>
                     <li><a href="about.html">About</a></li>
                     <li><a href="contact.html" class="active">Contact</a></li>
-                    <li id="lg-bag"><a href="cart.html"><i class="fa-solid fa-bag-shopping"></i></a></li>
+                    <li id="lg-bag"><a href="cart.html"><i class="fa-solid fa-bag-shopping"></i><span class="cart-count">2</span></a></li>
+                    <li id="user-account" class="user-account">
+                        <a href="#" class="user-icon"><i class="fa-solid fa-user"></i></a>
+                        <div id="user-menu" class="user-menu">
+                            <!-- Menu items will be loaded dynamically -->
+                        </div>
+                    </li>
                     <a href="#" id="close"><i class="fa-solid fa-xmark"></i></a>
                 </ul>
             </div>
             <div id="mobile">
-                <a href="cart.html"><i class="fa-solid fa-bag-shopping"></i></a>
+                <a href="cart.html"><i class="fa-solid fa-bag-shopping"></i><span class="cart-count">2</span></a>
+                <a href="profile.html" class="user-icon"><i class="fa-solid fa-user"></i></a>
                 <i id="bar" class="fas fa-outdent"></i>
             </div>
         </section>
@@ -60,8 +67,6 @@
         <div class="form-container">
             <div class="tabs">
                 <div class="tab active" data-tab="contact">Contact Us</div>
-                <div class="tab" data-tab="login">Login</div>
-                <div class="tab" data-tab="signup">Sign Up</div>
             </div>
             
             <!-- Contact Form -->
@@ -94,95 +99,6 @@
                     </div>
 
                     <button type="submit" class="btn-submit">SEND MESSAGE <i class="fas fa-paper-plane"></i></button>
-                </form>
-            </div>
-            
-            <!-- Login Form -->
-            <div class="form-content" id="login-form">
-                <form class="login-form">
-                    <div class="form-header">
-                        <i class="fas fa-user-circle form-icon"></i>
-                        <h2>LOGIN</h2>
-                        <p>Access your account</p>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="login-email"><i class="fas fa-envelope"></i> Email</label>
-                        <input type="email" id="login-email" placeholder="Your email" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="login-password"><i class="fas fa-lock"></i> Password</label>
-                        <input type="password" id="login-password" placeholder="Your password" required>
-                    </div>
-
-                    <div class="form-options">
-                        <div class="remember-me">
-                            <input type="checkbox" id="remember">
-                            <label for="remember">Remember me</label>
-                        </div>
-                        <a href="#" class="forgot-password">Forgot password?</a>
-                    </div>
-
-                    <button type="submit" class="btn-submit">LOGIN <i class="fas fa-sign-in-alt"></i></button>
-                    
-                    <div class="social-login">
-                        <p>Or login with</p>
-                        <div class="social-icons">
-                            <a href="#" class="social-icon facebook"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#" class="social-icon google"><i class="fab fa-google"></i></a>
-                            <a href="#" class="social-icon twitter"><i class="fab fa-twitter"></i></a>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            
-            <!-- Signup Form -->
-            <div class="form-content" id="signup-form">
-                <form class="signup-form">
-                    <div class="form-header">
-                        <i class="fas fa-user-plus form-icon"></i>
-                        <h2>CREATE ACCOUNT</h2>
-                        <p>Join our community today</p>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="signup-name"><i class="fas fa-user"></i> Full Name</label>
-                        <input type="text" id="signup-name" placeholder="Your full name" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="signup-email"><i class="fas fa-envelope"></i> Email</label>
-                        <input type="email" id="signup-email" placeholder="Your email" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="signup-password"><i class="fas fa-lock"></i> Password</label>
-                        <input type="password" id="signup-password" placeholder="Create a password" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="signup-confirm"><i class="fas fa-lock"></i> Confirm Password</label>
-                        <input type="password" id="signup-confirm" placeholder="Confirm your password" required>
-                    </div>
-
-                    <div class="form-options">
-                        <div class="terms">
-                            <input type="checkbox" id="terms" required>
-                            <label for="terms">I agree to the <a href="#">Terms and Conditions</a></label>
-                        </div>
-                    </div>
-
-                    <button type="submit" class="btn-submit">SIGN UP <i class="fas fa-user-plus"></i></button>
-                    
-                    <div class="social-login">
-                        <p>Or sign up with</p>
-                        <div class="social-icons">
-                            <a href="#" class="social-icon facebook"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#" class="social-icon google"><i class="fab fa-google"></i></a>
-                            <a href="#" class="social-icon twitter"><i class="fab fa-twitter"></i></a>
-                        </div>
-                    </div>
                 </form>
             </div>
         </div>
@@ -276,25 +192,140 @@
         </section>
 
         <script src="script.js"></script>
-        <script>
-            // Tab switching functionality
-            const tabs = document.querySelectorAll('.tab');
-            const formContents = document.querySelectorAll('.form-content');
+        <style>
+            .cart-count {
+                position: absolute;
+                top: -8px;
+                right: -8px;
+                background-color: #e8f6ea;
+                color: #088178;
+                font-size: 10px;
+                font-weight: bold;
+                height: 15px;
+                width: 15px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 50%;
+            }
+            #lg-bag, #mobile a {
+                position: relative;
+            }
+            #mobile .cart-count {
+                top: -5px;
+                right: -5px;
+                height: 14px;
+                width: 14px;
+                font-size: 9px;
+            }
+        </style>
 
-            tabs.forEach(tab => {
-                tab.addEventListener('click', () => {
-                    // Remove active class from all tabs and forms
-                    tabs.forEach(t => t.classList.remove('active'));
-                    formContents.forEach(form => form.classList.remove('active'));
-                    
-                    // Add active class to clicked tab
-                    tab.classList.add('active');
-                    
-                    // Show corresponding form
-                    const formId = tab.getAttribute('data-tab') + '-form';
-                    document.getElementById(formId).classList.add('active');
-                });
-            });
-        </script>
+        <script src="script.js"></script>
+        <style>
+            /* Cart icon styling */
+            .cart-count {
+                position: absolute;
+                top: -5px;
+                left: -5px;  /* Changed from right to left */
+                background-color: #e8f6ea;
+                color: #088178;
+                font-size: 10px;
+                font-weight: bold;
+                height: 15px;
+                width: 15px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 50%;
+            }
+            
+            #lg-bag, #mobile a {
+                position: relative;
+            }
+            
+            #lg-bag a i, #mobile a i.fa-bag-shopping {
+                font-size: 20px; /* Increased cart icon size */
+            }
+            
+            #mobile .cart-count {
+                top: -3px;
+                left: -3px;  /* Changed from right to left */
+                height: 14px;
+                width: 14px;
+                font-size: 9px;
+            }
+            
+            /* User account icon styling */
+            .user-account {
+                position: relative;
+            }
+            
+            .user-icon img, .user-icon div {
+                width: 35px !important; /* Increased avatar size */
+                height: 35px !important; /* Increased avatar size */
+                border-radius: 50%;
+                object-fit: cover;
+            }
+            
+            #mobile .user-icon img, #mobile .user-icon div {
+                width: 30px !important;
+                height: 30px !important;
+            }
+            
+            #mobile .user-icon img, #mobile .user-icon div {
+                width: 30px !important;
+                height: 30px !important;
+            }
+            
+            #mobile a.user-icon {
+                margin: 0 8px;
+            }
+            
+            #mobile a.user-icon i {
+                font-size: 18px;
+            }
+            
+            /* User account icon styling */
+            .user-account {
+                position: relative;
+            }
+            
+            .user-menu {
+                position: absolute;
+                top: 100%;
+                right: 0;
+                background: white;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+                width: 180px;
+                z-index: 1000;
+                border-radius: 4px;
+                display: none;
+            }
+            
+            .user-menu.active {
+                display: block;
+            }
+            
+            .user-menu a {
+                display: block;
+                padding: 10px 15px;
+                color: #1a1a1a;
+                transition: 0.3s;
+                font-size: 14px;
+            }
+            
+            .user-menu a:hover {
+                background: #e8f6ea;
+                color: #088178;
+            }
+            
+            .user-icon {
+                cursor: pointer;
+            }
+            
+            #navbar li:last-child {
+                margin-right: 0;
+            }
+        </style>
     </body>
 </html>
