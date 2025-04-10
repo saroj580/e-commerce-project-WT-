@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lume-Ecommerce-Profile</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="responsive-styles.css">
+    <style>
+        .profile-container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 30px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        .profile-container h2 {
+            color: #088178;
+            margin-bottom: 20px;
+        }
+
+        .profile-form .form-group {
+            margin-bottom: 20px;
+        }
+
+        .profile-form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .profile-form input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #e1e1e1;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .profile-form button {
+            padding: 12px 20px;
+            background-color: #088178;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .profile-form button:hover {
+            background-color: #066a63;
+        }
+
+        .profile-avatar {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .avatar-container {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            overflow: hidden;
+            background-color: #088178;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+        }
+
+        .avatar-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .avatar-upload {
+            margin-top: 10px;
+        }
+
+        .avatar-upload label {
+            display: inline-block;
+            padding: 8px 15px;
+            background-color: #f1f1f1;
+            color: #333;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .avatar-upload label:hover {
+            background-color: #e1e1e1;
+        }
+
+        .avatar-upload input[type="file"] {
+            display: none;
+        }
+
+        .profile-tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #e1e1e1;
+        }
+
+        .profile-tabs button {
+            padding: 10px 20px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            color: #555;
+        }
+
+        .profile-tabs button.active {
+            color: #088178;
+            border-bottom: 2px solid #088178;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        #order-history table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        #order-history th, #order-history td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #e1e1e1;
+        }
+
+        #order-history th {
+            background-color: #f9f9f9;
+            font-weight: 600;
+            color: #333;
+        }
+
+        #order-history a {
+            color: #088178;
+            text-decoration: none;
+        }
+
+        #order-history a:hover {
+            text-decoration: underline;
+        }
+
+        .profile-section {
+            margin-bottom: 30px;
+        }
+
+        .message {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .success-message {
+            background-color: #d4edda;
+            color: #155724;
+            display: none;
+        }
+
+        .error-message {
+            background-color: #f8d7da;
+            color: #721c24;
+            display: none;
+        }
+
+        /* Add responsive tables */
+        @media screen and (max-width: 768px) {
+            #order-history table {
+                display: block;
+                overflow-x: auto;
+                white-space: nowrap;
+            }
+            
+            .profile-tabs button {
+                padding: 10px 15px;
+                font-size: 14px;
+            }
+        }
+        
+        @media screen and (max-width: 480px) {
+            #order-history table thead {
+                display: none;
+            }
+            
+            #order-history table, 
+            #order-history table tbody, 
+            #order-history table tr, 
+            #order-history table td {
+                display: block;
+                width: 100%;
+                text-align: left;
+            }
+            
+            #order-history table tr {
+                margin-bottom: 15px;
+                border: 1px solid #e1e1e1;
+                border-radius: 5px;
+            }
+            
+            #order-history table td {
+                text-align: right;
+                padding-left: 50%;
+                position: relative;
+                border-bottom: 1px solid #eee;
+            }
+            
+            #order-history table td:last-child {
+                border-bottom: none;
+            }
+            
+            #order-history table td:before {
+                content: attr(data-label);
+                position: absolute;
+                left: 12px;
+                width: 45%;
+                padding-right: 10px;
+                text-align: left;
+                font-weight: bold;
+                color: #333;
+            }
+            
+            .profile-tabs {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .profile-tabs button {
+                padding: 8px 12px;
+                font-size: 13px;
+            }
+        }
+
+        /* Cart icon styling */
+        /* Cart count styles removed - no longer using number indicators */
+        
+        #lg-bag, #mobile a {
+            position: relative;
+        }
+        
+        #lg-bag a i, #mobile a i.fa-bag-shopping {
+            font-size: 20px; /* Increased cart icon size */
+        }
+
+        /* User account icon styling */
+        .user-account {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        
+        .user-icon img, .user-icon div {
+            width: clamp(30px, 2.5vw, 40px) !important; /* Responsive sizing */
+            height: clamp(30px, 2.5vw, 40px) !important; /* Responsive sizing */
+            border-radius: 50%;
+            object-fit: cover;
+            transition: all 0.3s ease;
+        }
+        
+        #mobile .user-icon img, #mobile .user-icon div {
+            width: 30px !important;
+            height: 30px !important;
+        }
+        
+        #mobile a.user-icon {
+            margin: 0 8px;
+        }
+        
+        #mobile a.user-icon i {
+            font-size: 18px;
+        }
+
+        /* User menu styling */
+        .user-menu {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            width: 180px;
+            z-index: 1000;
+            border-radius: 4px;
+            display: none;
+        }
+        
+        .user-menu.active {
+            display: block;
+        }
+        
+        .user-menu a {
+            display: block;
+            padding: 10px 15px;
+            color: #1a1a1a;
+            transition: 0.3s;
+            font-size: 14px;
+        }
+        
+        .user-menu a:hover {
+            background: #e8f6ea;
+            color: #088178;
+        }
+        
+        .user-icon {
+            cursor: pointer;
+        }
+        
+        #navbar li:last-child {
+            margin-right: 0;
+        }
+
+        /* Cart number styling */
+        /* Cart number styling removed - no longer using number indicators */
+
+        /* Responsive adjustments */
+        @media screen and (min-width: 768px) and (max-width: 1200px) {
+            #navbar .user-account {
+                margin-left: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- navbar section -->
+    <section id="header">
+        <a href="#"><img src="img/logo1.png" alt="logo" class="logo"></a>
+        <div>
+            <ul id="navbar">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li id="search-container">
+                    <div class="search-wrapper">
+                        <input type="text" id="search-input" placeholder="Search products...">
+                        <div id="search-suggestions"></div>
+                    </div>
+                    <a href="#" id="search-icon"><i class="fa-solid fa-magnifying-glass"></i></a>
+                </li>
+                <li id="lg-bag"><a href="cart.html" id="cart-icon"><i class="fa-solid fa-bag-shopping"></i></a></li>
+                <li id="user-account" class="user-account">
+                    <a href="#" class="user-icon"><i class="fa-solid fa-user"></i></a>
+                    <div id="user-menu" class="user-menu">
+                        <!-- Menu items will be loaded dynamically -->
+                    </div>
+                </li>
+                <a href="#" id="close"><i class="fa-solid fa-xmark"></i></a>
+            </ul>
+        </div>
+        <div id="mobile">
+            <a href="cart.html"><i class="fa-solid fa-bag-shopping"></i></a>
+            <a href="profile.html" class="user-icon"><i class="fa-solid fa-user"></i></a>
+            <i id="bar" class="fas fa-outdent"></i>
+        </div>
+    </section>
+
+    <!-- Page Header -->
+    <section id="page-header" class="about-header">
+        <h2>#myProfile</h2>
+        <p>Manage your account and view your orders</p>
+    </section>
+
+    <!-- Profile Section -->
+    <section id="profile-section" class="section-p1">
+        <div class="profile-container">
+            <div class="profile-tabs">
+                <button class="tab-btn active" data-tab="account">Account Details</button>
+                <button class="tab-btn" data-tab="orders">Order History</button>
+            </div>
+
+            <div id="success-message" class="message success-message"></div>
+            <div id="error-message" class="message error-message"></div>
+
+            <div id="account-tab" class="tab-content active">
+                <h2>Account Details</h2>
+                <div class="profile-avatar">
+                    <div id="avatar-container" class="avatar-container">
+                        <!-- Avatar image or initials will be displayed here -->
+                    </div>
+                    <div class="avatar-upload">
+                        <label for="avatar-upload">Change Profile Picture</label>
+                        <input type="file" id="avatar-upload" accept="image/*">
+                    </div>
+                </div>
+                <form id="profile-form" class="profile-form">
+                    <div class="form-group">
+                        <label for="profile-name">Name</label>
+                        <input type="text" id="profile-name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="profile-email">Email</label>
+                        <input type="email" id="profile-email" name="email" required readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="profile-password">New Password (leave blank to keep current)</label>
+                        <input type="password" id="profile-password" name="password" minlength="6">
+                    </div>
+                    <button type="submit">Update Profile</button>
+                </form>
+            </div>
+
+            <div id="orders-tab" class="tab-content">
+                <h2>Order History</h2>
+                <div id="order-history">
+                    <p>Loading order history...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section id="newsLetter" class="section-p1 section-m1">
+        <div class="newsText">
+            <h4>Sign Up for NewsLetter</h4>
+            <p>Get Email updates for our latest Shop and <span>Special Offers.</span></p>
+        </div>
+        <div class="form">
+            <input type="text" placeholder="your email address">
+            <button class="normal">Sign Up</button>
+        </div>
+    </section>
+
+    <!-- Footer section -->
+    <section id="footer" class="section-m1">
+        <div class="top-section">
+            <div class="location">
+                <h4>Popular location</h4>
+                <a href="#">Kathmandu</a>
+                <a href="#">Nepalgunj</a>
+                <a href="#">Chitwan</a>
+                <a href="#">Pokhara</a>
+            </div>
+            <div class="Trending-location">
+                <h4>Trending location</h4>
+                <a href="#">Birgunj</a>
+                <a href="#">Rautahat</a>
+                <a href="#">Biratnagar</a>
+                <a href="#">jankapur</a>
+            </div>
+            <div class="about-us">
+                <h4>About Us</h4>
+                <a href="#">Tech@lume</a>
+            </div>
+
+            <div class="lume">
+                <h4>lume</h4>
+                <a href="#">Shop</a>
+                <a href="#">Blog</a>
+                <a href="#">Help</a>
+                <a href="#">Location</a>
+                <a href="#">Legal & privacy information</a>
+            </div>
+
+            <div class="follow-us">
+                <h4>Follow Us</h4>
+                <div class="icon">
+                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <!-- Copyright section -->
+        <div class="copyright">
+            <p>&copy; 2025, Lume - Ecommerce</p>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Tab switching functionality
+            const tabButtons = document.querySelectorAll('.tab-btn');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Remove active class from all buttons and tabs
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    tabContents.forEach(tab => tab.classList.remove('active'));
+                    
+                    // Add active class to clicked button and corresponding tab
+                    button.classList.add('active');
+                    const tabId = button.getAttribute('data-tab');
+                    document.getElementById(`${tabId}-tab`).classList.add('active');
+                });
+            });
+            
+            // Setup profile avatar
+            setupProfileAvatar();
+            
+            // Handle profile form submission
+            const profileForm = document.getElementById('profile-form');
+            const successMessage = document.getElementById('success-message');
+            const errorMessage = document.getElementById('error-message');
+            
+            if (profileForm) {
+                profileForm.addEventListener('submit', async function(e) {
+                    e.preventDefault();
+                    
+                    // Reset messages
+                    successMessage.style.display = 'none';
+                    errorMessage.style.display = 'none';
+                    
+                    const name = document.getElementById('profile-name').value;
+                    const email = document.getElementById('profile-email').value;
+                    const password = document.getElementById('profile-password').value;
+                    
+                    // Create update data object
+                    const updateData = { name, email };
+                    if (password) {
+                        updateData.password = password;
+                    }
+                    
+                    try {
+                        const response = await fetch('http://localhost:5050/api/users/profile', {
+                            method: 'PUT',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Authorization': `Bearer ${localStorage.getItem('userToken')}`
+                            },
+                            body: JSON.stringify(updateData)
+                        });
+                        
+                        const data = await response.json();
+                        
+                        if (!response.ok) {
+                            throw new Error(data.message || 'Update failed');
+                        }
+                        
+                        // Update stored user data
+                        const userData = JSON.parse(localStorage.getItem('userData'));
+                        userData.name = data.name;
+                        userData.email = data.email;
+                        localStorage.setItem('userData', JSON.stringify(userData));
+                        
+                        // Update avatar if name changed
+                        updateAvatarInitials(data.name);
+                        
+                        // Show success message
+                        successMessage.textContent = 'Profile updated successfully!';
+                        successMessage.style.display = 'block';
+                        
+                        // Clear password field
+                        document.getElementById('profile-password').value = '';
+                        
+                    } catch (error) {
+                        errorMessage.textContent = error.message;
+                        errorMessage.style.display = 'block';
+                    }
+                });
+            }
+            
+            // Load user profile data when page loads
+            loadUserProfile();
+        });
+        
+        // Function to setup profile avatar
+        function setupProfileAvatar() {
+            const avatarInput = document.getElementById('avatar-upload');
+            if (!avatarInput) return;
+            
+            // Handle file upload
+            avatarInput.addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (!file) return;
+                
+                // Check file type
+                if (!file.type.match('image.*')) {
+                    alert('Please select an image file');
+                    return;
+                }
+                
+                // Check file size (max 5MB)
+                if (file.size > 5 * 1024 * 1024) {
+                    alert('File size should be less than 5MB');
+                    return;
+                }
+                
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    // Store profile pic in localStorage
+                    localStorage.setItem('userProfilePic', e.target.result);
+                    
+                    // Update avatar display
+                    updateAvatarDisplay(e.target.result);
+                };
+                reader.readAsDataURL(file);
+            });
+            
+            // Initial avatar display
+            updateAvatarDisplay();
+        }
+        
+        // Function to update avatar display
+        function updateAvatarDisplay(profilePic) {
+            const avatarContainer = document.getElementById('avatar-container');
+            if (!avatarContainer) return;
+            
+            // If profilePic is not provided, check localStorage
+            if (!profilePic) {
+                profilePic = localStorage.getItem('userProfilePic');
+            }
+            
+            // Get user data for name
+            const userData = JSON.parse(localStorage.getItem('userData'));
+            if (!userData) return;
+            
+            if (profilePic) {
+                // Display profile pic
+                avatarContainer.innerHTML = `<img src="${profilePic}" alt="${userData.name}">`;
+            } else {
+                // Display initials
+                avatarContainer.innerHTML = getInitials(userData.name);
+            }
+        }
+        
+        // Function to update avatar initials when name changes
+        function updateAvatarInitials(name) {
+            const avatarContainer = document.getElementById('avatar-container');
+            const profilePic = localStorage.getItem('userProfilePic');
+            
+            if (!avatarContainer || profilePic) return; // Skip if container doesn't exist or there's a profile pic
+            
+            avatarContainer.innerHTML = getInitials(name);
+        }
+        
+        // Helper function to get initials from a name
+        function getInitials(name) {
+            if (!name) return '?';
+            
+            const nameParts = name.trim().split(' ');
+            if (nameParts.length === 1) {
+                return nameParts[0].charAt(0).toUpperCase();
+            } else {
+                return (nameParts[0].charAt(0) + nameParts[nameParts.length - 1].charAt(0)).toUpperCase();
+            }
+        }
+        
+        // Function to load user profile
+        async function loadUserProfile() {
+            const token = localStorage.getItem('userToken');
+            if (!token) {
+                window.location.href = 'login.html?redirect=profile.html';
+                return;
+            }
+            
+            try {
+                // Fetch user profile
+                const profileResponse = await fetch('http://localhost:5050/api/users/profile', {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+                
+                if (!profileResponse.ok) {
+                    throw new Error('Failed to load profile');
+                }
+                
+                const userProfile = await profileResponse.json();
+                
+                // Fill profile form fields
+                document.getElementById('profile-name').value = userProfile.name;
+                document.getElementById('profile-email').value = userProfile.email;
+                
+                // Fetch user orders
+                const ordersResponse = await fetch('http://localhost:5050/api/orders/myorders', {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+                
+                if (!ordersResponse.ok) {
+                    throw new Error('Failed to load orders');
+                }
+                
+                const orders = await ordersResponse.json();
+                
+                // Display order history
+                const orderHistoryContainer = document.getElementById('order-history');
+                if (orderHistoryContainer) {
+                    if (orders && orders.length > 0) {
+                        let orderHTML = `
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Date</th>
+                                        <th>Total</th>
+                                        <th>Paid</th>
+                                        <th>Delivered</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                        `;
+                        
+                        orders.forEach(order => {
+                            const orderDate = new Date(order.createdAt).toLocaleDateString();
+                            orderHTML += `
+                                <tr>
+                                    <td data-label="ID">${order._id.substring(0, 8)}...</td>
+                                    <td data-label="Date">${orderDate}</td>
+                                    <td data-label="Total">$${order.totalPrice.toFixed(2)}</td>
+                                    <td data-label="Paid">${order.isPaid ? 'Yes' : 'No'}</td>
+                                    <td data-label="Delivered">${order.isDelivered ? 'Yes' : 'No'}</td>
+                                    <td data-label="Actions"><a href="orders.html?id=${order._id}">Details</a></td>
+                                </tr>
+                            `;
+                        });
+                        
+                        orderHTML += `
+                                </tbody>
+                            </table>
+                        `;
+                        
+                        orderHistoryContainer.innerHTML = orderHTML;
+                    } else {
+                        orderHistoryContainer.innerHTML = '<p>You have no order history yet.</p>';
+                    }
+                }
+                
+            } catch (error) {
+                console.error('Error loading profile:', error);
+                document.getElementById('error-message').textContent = error.message;
+                document.getElementById('error-message').style.display = 'block';
+            }
+        }
+    </script>
+</body>
+
+</html> 
