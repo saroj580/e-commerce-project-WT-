@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lume-Ecommerce-Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="responsive-styles.css">
+    <style>
+        .login-container {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 30px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        .login-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #088178;
+        }
+
+        .login-form .form-group {
+            margin-bottom: 20px;
+        }
+
+        .login-form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .login-form input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #e1e1e1;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .login-form button {
+            width: 100%;
+            padding: 12px;
+            background-color: #088178;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .login-form button:hover {
+            background-color: #066a63;
+        }
+
+        .register-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .register-link a {
+            color: #088178;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .register-link a:hover {
+            text-decoration: underline;
+        }
+
+        .error-message {
+            color: #e74c3c;
+            margin-top: 20px;
+            text-align: center;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- navbar section -->
+    <section id="header">
+        <a href="#"><img src="img/logo1.png" alt="logo" class="logo"></a>
+        <div>
+            <ul id="navbar">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li id="search-container">
+                    <div class="search-wrapper">
+                        <input type="text" id="search-input" placeholder="Search products...">
+                        <div id="search-suggestions"></div>
+                    </div>
+                    <a href="#" id="search-icon"><i class="fa-solid fa-magnifying-glass"></i></a>
+                </li>
+                <li id="lg-bag"><a href="cart.html"><i class="fa-solid fa-bag-shopping"></i></a></li>
+                <a href="#" id="close"><i class="fa-solid fa-xmark"></i></a>
+            </ul>
+        </div>
+        <div id="mobile">
+            <a href="cart.html"><i class="fa-solid fa-bag-shopping"></i></a>
+            <i id="bar" class="fas fa-outdent"></i>
+        </div>
+    </section>
+
+    <!-- Page Header -->
+    <section id="page-header" class="about-header">
+        <h2>#login</h2>
+        <p>Sign in to access your account</p>
+    </section>
+
+    <!-- Login Section -->
+    <section id="login-section" class="section-p1">
+        <div class="login-container">
+            <h2>Login</h2>
+            <div id="error-message" class="error-message"></div>
+            <form id="login-form" class="login-form">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit">Login</button>
+            </form>
+            <div class="register-link">
+                <p>Don't have an account? <a href="register.html">Register here</a></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section id="newsLetter" class="section-p1 section-m1">
+        <div class="newsText">
+            <h4>Sign Up for NewsLetter</h4>
+            <p>Get Email updates for our latest Shop and <span>Special Offers.</span></p>
+        </div>
+        <div class="form">
+            <input type="text" placeholder="your email address">
+            <button class="normal">Sign Up</button>
+        </div>
+    </section>
+
+    <!-- Footer section -->
+    <section id="footer" class="section-m1">
+        <div class="top-section">
+            <div class="location">
+                <h4>Popular location</h4>
+                <a href="#">Kathmandu</a>
+                <a href="#">Nepalgunj</a>
+                <a href="#">Chitwan</a>
+                <a href="#">Pokhara</a>
+            </div>
+            <div class="Trending-location">
+                <h4>Trending location</h4>
+                <a href="#">Birgunj</a>
+                <a href="#">Rautahat</a>
+                <a href="#">Biratnagar</a>
+                <a href="#">jankapur</a>
+            </div>
+            <div class="about-us">
+                <h4>About Us</h4>
+                <a href="#">Tech@lume</a>
+            </div>
+
+            <div class="lume">
+                <h4>lume</h4>
+                <a href="#">Shop</a>
+                <a href="#">Blog</a>
+                <a href="#">Help</a>
+                <a href="#">Location</a>
+                <a href="#">Legal & privacy information</a>
+            </div>
+
+            <div class="follow-us">
+                <h4>Follow Us</h4>
+                <div class="icon">
+                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <!-- Copyright section -->
+        <div class="copyright">
+            <p>&copy; 2025, Lume - Ecommerce</p>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const loginForm = document.getElementById('login-form');
+            const errorMessage = document.getElementById('error-message');
+            
+            // If user is already logged in, redirect to homepage
+            if (localStorage.getItem('userToken')) {
+                window.location.href = 'index.html';
+            }
+
+            loginForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+                
+                try {
+                    const response = await fetch('http://localhost:5050/api/users/login', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ email, password })
+                    });
+                    
+                    const data = await response.json();
+                    
+                    if (!response.ok) {
+                        throw new Error(data.message || 'Login failed');
+                    }
+                    
+                    // Store user data and token
+                    localStorage.setItem('userToken', data.token);
+                    localStorage.setItem('userData', JSON.stringify({
+                        id: data._id,
+                        name: data.name,
+                        email: data.email,
+                        isAdmin: data.isAdmin
+                    }));
+                    
+                    // Redirect to homepage or previous page
+                    const redirectUrl = new URLSearchParams(window.location.search).get('redirect') || 'index.html';
+                    window.location.href = redirectUrl;
+                    
+                } catch (error) {
+                    errorMessage.textContent = error.message;
+                    errorMessage.style.display = 'block';
+                }
+            });
+        });
+    </script>
+</body>
+
+</html> 
