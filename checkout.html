@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lume-Ecommerce-Checkout</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="responsive-styles.css">
+    <style>
+        .checkout-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .checkout-form {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .order-summary {
+            width: 350px;
+            background: #f7f8f9;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        .checkout-form h3,
+        .order-summary h3 {
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e1e1e1;
+            color: #088178;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #e1e1e1;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 15px;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+        }
+
+        .order-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed #e1e1e1;
+        }
+
+        .order-item-details {
+            flex: 1;
+        }
+
+        .order-item-price {
+            text-align: right;
+            font-weight: 600;
+        }
+
+        .order-total {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e1e1;
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .payment-methods {
+            margin-top: 20px;
+        }
+
+        .payment-method {
+            margin-bottom: 10px;
+        }
+
+        .payment-method input {
+            margin-right: 10px;
+        }
+
+        button.place-order {
+            width: 100%;
+            padding: 12px;
+            background-color: #088178;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+
+        button.place-order:hover {
+            background-color: #066a63;
+        }
+
+        .error-message {
+            color: #e74c3c;
+            margin-top: 20px;
+            display: none;
+        }
+
+        .success-message {
+            color: #27ae60;
+            margin-top: 20px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- navbar section -->
+    <section id="header">
+        <a href="#"><img src="img/logo1.png" alt="logo" class="logo"></a>
+        <div>
+            <ul id="navbar">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li id="search-container">
+                    <div class="search-wrapper">
+                        <input type="text" id="search-input" placeholder="Search products...">
+                        <div id="search-suggestions"></div>
+                    </div>
+                    <a href="#" id="search-icon"><i class="fa-solid fa-magnifying-glass"></i></a>
+                </li>
+                <li id="lg-bag"><a href="cart.html"><i class="fa-solid fa-bag-shopping"></i></a></li>
+                <a href="#" id="close"><i class="fa-solid fa-xmark"></i></a>
+            </ul>
+        </div>
+        <div id="mobile">
+            <a href="cart.html"><i class="fa-solid fa-bag-shopping"></i></a>
+            <i id="bar" class="fas fa-outdent"></i>
+        </div>
+    </section>
+
+    <!-- Page Header -->
+    <section id="page-header" class="about-header">
+        <h2>#checkout</h2>
+        <p>Complete your order</p>
+    </section>
+
+    <!-- Checkout Section -->
+    <section id="checkout" class="section-p1">
+        <div class="checkout-container">
+            <div class="checkout-form">
+                <h3>Shipping Details</h3>
+                <div id="error-message" class="error-message"></div>
+                <div id="success-message" class="success-message"></div>
+                <form id="checkout-form">
+                    <div class="form-group">
+                        <label for="full-name">Full Name</label>
+                        <input type="text" id="full-name" name="full-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Address</label>
+                        <input type="text" id="address" name="address" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="city">City</label>
+                            <input type="text" id="city" name="city" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="postal-code">Postal Code</label>
+                            <input type="text" id="postal-code" name="postal-code" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="country">Country</label>
+                        <input type="text" id="country" name="country" required>
+                    </div>
+                </form>
+            </div>
+
+            <div class="order-summary">
+                <h3>Order Summary</h3>
+                <div id="order-items"></div>
+                <div class="order-total">
+                    <span>Total:</span>
+                    <span id="order-total-price">$0.00</span>
+                </div>
+
+                <div class="payment-methods">
+                    <h4>Payment Method</h4>
+                    <div class="payment-method">
+                        <input type="radio" id="payment-card" name="payment-method" value="card" checked>
+                        <label for="payment-card">Credit/Debit Card</label>
+                    </div>
+                    <div class="payment-method">
+                        <input type="radio" id="payment-paypal" name="payment-method" value="paypal">
+                        <label for="payment-paypal">PayPal</label>
+                    </div>
+                    <div class="payment-method">
+                        <input type="radio" id="payment-cod" name="payment-method" value="cod">
+                        <label for="payment-cod">Cash on Delivery</label>
+                    </div>
+                </div>
+
+                <button class="place-order">Place Order</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section id="newsLetter" class="section-p1 section-m1">
+        <div class="newsText">
+            <h4>Sign Up for NewsLetter</h4>
+            <p>Get Email updates for our latest Shop and <span>Special Offers.</span></p>
+        </div>
+        <div class="form">
+            <input type="text" placeholder="your email address">
+            <button class="normal">Sign Up</button>
+        </div>
+    </section>
+
+    <!-- Footer section -->
+    <section id="footer" class="section-m1">
+        <div class="top-section">
+            <div class="location">
+                <h4>Popular location</h4>
+                <a href="#">Kathmandu</a>
+                <a href="#">Nepalgunj</a>
+                <a href="#">Chitwan</a>
+                <a href="#">Pokhara</a>
+            </div>
+            <div class="Trending-location">
+                <h4>Trending location</h4>
+                <a href="#">Birgunj</a>
+                <a href="#">Rautahat</a>
+                <a href="#">Biratnagar</a>
+                <a href="#">jankapur</a>
+            </div>
+            <div class="about-us">
+                <h4>About Us</h4>
+                <a href="#">Tech@lume</a>
+            </div>
+
+            <div class="lume">
+                <h4>lume</h4>
+                <a href="#">Shop</a>
+                <a href="#">Blog</a>
+                <a href="#">Help</a>
+                <a href="#">Location</a>
+                <a href="#">Legal & privacy information</a>
+            </div>
+
+            <div class="follow-us">
+                <h4>Follow Us</h4>
+                <div class="icon">
+                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <!-- Copyright section -->
+        <div class="copyright">
+            <p>&copy; 2025, Lume - Ecommerce</p>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const API_URL = 'http://localhost:5050/api';
+            const orderItemsContainer = document.getElementById('order-items');
+            const orderTotalPrice = document.getElementById('order-total-price');
+            const checkoutForm = document.getElementById('checkout-form');
+            const placeOrderButton = document.querySelector('.place-order');
+            const errorMessage = document.getElementById('error-message');
+            const successMessage = document.getElementById('success-message');
+            
+            // Check if user is logged in
+            const token = localStorage.getItem('userToken');
+            if (!token) {
+                window.location.href = 'login.html?redirect=checkout.html';
+                return;
+            }
+            
+            // Load user profile data to pre-fill form
+            loadUserProfile();
+            
+            // Load cart items
+            displayOrderSummary();
+            
+            // Place order button event
+            placeOrderButton.addEventListener('click', placeOrder);
+            
+            // Function to load user profile
+            async function loadUserProfile() {
+                try {
+                    const response = await fetch(`${API_URL}/users/profile`, {
+                        headers: {
+                            'Authorization': `Bearer ${token}`
+                        }
+                    });
+                    
+                    if (!response.ok) {
+                        throw new Error('Failed to load user profile');
+                    }
+                    
+                    const user = await response.json();
+                    
+                    // Pre-fill form with user data
+                    document.getElementById('full-name').value = user.name || '';
+                    document.getElementById('email').value = user.email || '';
+                    document.getElementById('phone').value = user.phone || '';
+                    
+                    // If user has address, parse it and fill form (simplified example)
+                    if (user.address) {
+                        document.getElementById('address').value = user.address;
+                    }
+                    
+                } catch (error) {
+                    console.error('Error loading user profile:', error);
+                }
+            }
+            
+            // Function to display order summary
+            function displayOrderSummary() {
+                const cart = JSON.parse(localStorage.getItem('cart')) || [];
+                
+                if (cart.length === 0) {
+                    window.location.href = 'cart.html';
+                    return;
+                }
+                
+                let total = 0;
+                orderItemsContainer.innerHTML = '';
+                
+                cart.forEach(item => {
+                    const itemTotal = item.price * item.quantity;
+                    total += itemTotal;
+                    
+                    const orderItem = document.createElement('div');
+                    orderItem.className = 'order-item';
+                    orderItem.innerHTML = `
+                        <div class="order-item-details">
+                            <span>${item.name}</span>
+                            <div>Qty: ${item.quantity}</div>
+                        </div>
+                        <div class="order-item-price">$${itemTotal.toFixed(2)}</div>
+                    `;
+                    
+                    orderItemsContainer.appendChild(orderItem);
+                });
+                
+                orderTotalPrice.textContent = `$${total.toFixed(2)}`;
+            }
+            
+            // Function to place order
+            async function placeOrder() {
+                // Get form data
+                const fullName = document.getElementById('full-name').value;
+                const email = document.getElementById('email').value;
+                const phone = document.getElementById('phone').value;
+                const address = document.getElementById('address').value;
+                const city = document.getElementById('city').value;
+                const postalCode = document.getElementById('postal-code').value;
+                const country = document.getElementById('country').value;
+                
+                // Get selected payment method
+                const paymentMethod = document.querySelector('input[name="payment-method"]:checked').value;
+                
+                // Validate form
+                if (!fullName || !email || !phone || !address || !city || !postalCode || !country) {
+                    errorMessage.textContent = 'Please fill in all required fields';
+                    errorMessage.style.display = 'block';
+                    return;
+                }
+                
+                // Get cart items
+                const cart = JSON.parse(localStorage.getItem('cart')) || [];
+                
+                if (cart.length === 0) {
+                    errorMessage.textContent = 'Your cart is empty';
+                    errorMessage.style.display = 'block';
+                    return;
+                }
+                
+                // Calculate totals
+                const itemsPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                const taxPrice = itemsPrice * 0.10; // 10% tax
+                const shippingPrice = itemsPrice > 100 ? 0 : 10; // Free shipping over $100
+                const totalPrice = itemsPrice + taxPrice + shippingPrice;
+                
+                // Create order items for API
+                const orderItems = cart.map(item => ({
+                    name: item.name,
+                    quantity: item.quantity,
+                    image: item.image,
+                    price: item.price,
+                    product: item._id
+                }));
+                
+                // Create order object
+                const order = {
+                    orderItems,
+                    shippingAddress: {
+                        address,
+                        city,
+                        postalCode,
+                        country
+                    },
+                    paymentMethod,
+                    taxPrice,
+                    shippingPrice,
+                    totalPrice
+                };
+                
+                try {
+                    // Reset messages
+                    errorMessage.style.display = 'none';
+                    successMessage.style.display = 'none';
+                    
+                    // Send order to API
+                    const response = await fetch(`${API_URL}/orders`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${token}`
+                        },
+                        body: JSON.stringify(order)
+                    });
+                    
+                    const data = await response.json();
+                    
+                    if (!response.ok) {
+                        throw new Error(data.message || 'Failed to place order');
+                    }
+                    
+                    // Clear cart
+                    localStorage.setItem('cart', JSON.stringify([]));
+                    
+                    // Show success message
+                    successMessage.textContent = 'Order placed successfully!';
+                    successMessage.style.display = 'block';
+                    
+                    // Redirect to order confirmation page
+                    setTimeout(() => {
+                        window.location.href = `order-confirmation.html?id=${data._id}`;
+                    }, 2000);
+                    
+                } catch (error) {
+                    errorMessage.textContent = error.message;
+                    errorMessage.style.display = 'block';
+                }
+            }
+        });
+    </script>
+</body>
+
+</html> 
