@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lume-Ecommerce-Order Details</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="responsive-styles.css">
+    <style>
+        .order-container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 30px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        .order-container h2 {
+            color: #088178;
+            margin-bottom: 20px;
+        }
+
+        .order-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e1e1e1;
+            flex-wrap: wrap;
+        }
+
+        .order-status {
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 14px;
+            text-align: center;
+            margin: 5px 5px 5px 0;
+            display: inline-block;
+        }
+
+        .status-paid {
+            background-color: #d1e7dd;
+            color: #0f5132;
+        }
+
+        .status-pending {
+            background-color: #fff3cd;
+            color: #664d03;
+        }
+
+        .status-delivered {
+            background-color: #cff4fc;
+            color: #055160;
+        }
+
+        .order-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .order-details div {
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 4px;
+        }
+
+        .order-details h3 {
+            margin-bottom: 10px;
+            color: #333;
+            font-size: 18px;
+        }
+
+        .order-items {
+            margin-bottom: 30px;
+            overflow-x: auto;
+        }
+
+        .order-items table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 600px;
+        }
+
+        .order-items th, .order-items td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #e1e1e1;
+        }
+
+        .order-items th {
+            background-color: #f9f9f9;
+            font-weight: 600;
+        }
+
+        .order-items .product-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .order-items .product-info img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            margin-right: 15px;
+        }
+
+        .order-summary {
+            margin-top: 20px;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 4px;
+        }
+
+        .order-summary table {
+            width: 100%;
+        }
+
+        .order-summary tr:last-child {
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .order-summary td {
+            padding: 8px 0;
+        }
+
+        .order-summary td:last-child {
+            text-align: right;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 15px;
+            background-color: #088178;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background-color: #066a63;
+        }
+
+        #loading {
+            text-align: center;
+            padding: 30px;
+        }
+
+        #error-message {
+            color: #842029;
+            background-color: #f8d7da;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            text-align: center;
+            display: none;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e1e1e1;
+        }
+
+        .user-info .avatar-container {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            background-color: #088178;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            margin-right: 15px;
+        }
+
+        .user-info .avatar-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .user-info .user-details {
+            flex: 1;
+        }
+
+        .user-info .user-details h3 {
+            margin: 0 0 5px 0;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .user-info .user-details p {
+            margin: 0;
+            color: #666;
+            font-size: 14px;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .order-container {
+                padding: 15px;
+                margin: 30px 10px;
+            }
+
+            .order-header {
+                flex-direction: column;
+            }
+
+            .order-header > div:last-child {
+                margin-top: 10px;
+            }
+
+            .order-details {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .order-details div {
+                padding: 12px;
+            }
+
+            .order-items table {
+                font-size: 14px;
+            }
+
+            .order-items th, .order-items td {
+                padding: 10px;
+            }
+
+            .order-items .product-info img {
+                width: 50px;
+                height: 50px;
+            }
+
+            .order-summary {
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .order-container h2 {
+                font-size: 20px;
+            }
+
+            .order-details h3 {
+                font-size: 16px;
+            }
+            
+            /* Stack order items vertically on mobile */
+            .order-items table, 
+            .order-items thead, 
+            .order-items tbody, 
+            .order-items tr {
+                display: block;
+                width: 100%;
+            }
+            
+            .order-items thead tr {
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
+            }
+            
+            .order-items tr {
+                border: 1px solid #e1e1e1;
+                margin-bottom: 15px;
+                border-radius: 5px;
+            }
+            
+            .order-items td {
+                display: block;
+                border: none;
+                border-bottom: 1px solid #eee;
+                position: relative;
+                padding-left: 50%;
+                text-align: right;
+            }
+            
+            .order-items td:last-child {
+                border-bottom: none;
+            }
+            
+            .order-items td:before {
+                content: attr(data-label);
+                position: absolute;
+                left: 8px;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 45%;
+                padding-right: 10px;
+                white-space: nowrap;
+                font-weight: bold;
+            }
+            
+            .order-items .product-info {
+                flex-direction: column;
+                text-align: center;
+                padding-left: 0;
+            }
+            
+            .order-items .product-info img {
+                margin-right: 0;
+                margin-bottom: 8px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- navbar section -->
+    <section id="header">
+        <a href="#"><img src="img/logo1.png" alt="logo" class="logo"></a>
+        <div>
+            <ul id="navbar">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li id="search-container">
+                    <div class="search-wrapper">
+                        <input type="text" id="search-input" placeholder="Search products...">
+                        <div id="search-suggestions"></div>
+                    </div>
+                    <a href="#" id="search-icon"><i class="fa-solid fa-magnifying-glass"></i></a>
+                </li>
+                <li id="lg-bag"><a href="cart.html" id="cart-icon"><i class="fa-solid fa-bag-shopping"></i></a></li>
+                <li id="user-account" class="user-account">
+                    <a href="#" class="user-icon"><i class="fa-solid fa-user"></i></a>
+                </li>
+                <a href="#" id="close"><i class="fa-solid fa-xmark"></i></a>
+            </ul>
+        </div>
+        <div id="mobile">
+            <a href="cart.html"><i class="fa-solid fa-bag-shopping"></i></a>
+            <i id="bar" class="fas fa-outdent"></i>
+        </div>
+    </section>
+
+    <!-- Page Header -->
+    <section id="page-header" class="about-header">
+        <h2>#orderDetails</h2>
+        <p>View information about your order</p>
+    </section>
+
+    <!-- Order Details Section -->
+    <section id="order-section" class="section-p1">
+        <div id="error-message"></div>
+        <div id="loading">Loading order details...</div>
+        <div id="order-container" class="order-container" style="display: none;">
+            <!-- Order content will be loaded dynamically -->
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section id="newsLetter" class="section-p1 section-m1">
+        <div class="newsText">
+            <h4>Sign Up for NewsLetter</h4>
+            <p>Get Email updates for our latest Shop and <span>Special Offers.</span></p>
+        </div>
+        <div class="form">
+            <input type="text" placeholder="your email address">
+            <button class="normal">Sign Up</button>
+        </div>
+    </section>
+
+    <!-- Footer section -->
+    <section id="footer" class="section-m1">
+        <div class="top-section">
+            <div class="location">
+                <h4>Popular location</h4>
+                <a href="#">Kathmandu</a>
+                <a href="#">Nepalgunj</a>
+                <a href="#">Chitwan</a>
+                <a href="#">Pokhara</a>
+            </div>
+            <div class="Trending-location">
+                <h4>Trending location</h4>
+                <a href="#">Birgunj</a>
+                <a href="#">Rautahat</a>
+                <a href="#">Biratnagar</a>
+                <a href="#">jankapur</a>
+            </div>
+            <div class="about-us">
+                <h4>About Us</h4>
+                <a href="#">Tech@lume</a>
+            </div>
+
+            <div class="lume">
+                <h4>lume</h4>
+                <a href="#">Shop</a>
+                <a href="#">Blog</a>
+                <a href="#">Help</a>
+                <a href="#">Location</a>
+                <a href="#">Legal & privacy information</a>
+            </div>
+
+            <div class="follow-us">
+                <h4>Follow Us</h4>
+                <div class="icon">
+                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <!-- Copyright section -->
+        <div class="copyright">
+            <p>&copy; 2025, Lume - Ecommerce</p>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if user is logged in
+            const token = localStorage.getItem('userToken');
+            if (!token) {
+                window.location.href = 'login.html?redirect=profile.html';
+                return;
+            }
+            
+            // Get order ID from URL parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            const orderId = urlParams.get('id');
+            
+            if (!orderId) {
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('error-message').textContent = 'No order ID provided';
+                document.getElementById('error-message').style.display = 'block';
+                return;
+            }
+            
+            // Fetch order details
+            fetchOrderDetails(orderId);
+        });
+        
+        async function fetchOrderDetails(orderId) {
+            try {
+                const token = localStorage.getItem('userToken');
+                const response = await fetch(`http://localhost:5050/api/orders/${orderId}`, {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+                
+                if (!response.ok) {
+                    throw new Error('Failed to load order details');
+                }
+                
+                const order = await response.json();
+                
+                // Display order details
+                displayOrderDetails(order);
+                
+                // Hide loading
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('order-container').style.display = 'block';
+                
+            } catch (error) {
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('error-message').textContent = error.message;
+                document.getElementById('error-message').style.display = 'block';
+            }
+        }
+        
+        function displayOrderDetails(order) {
+            const container = document.getElementById('order-container');
+            
+            // Format date
+            const orderDate = new Date(order.createdAt).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+            
+            // Get payment and delivery status
+            const isPaid = order.isPaid ? 'Paid' : 'Payment Pending';
+            const paidDate = order.isPaid && order.paidAt ? new Date(order.paidAt).toLocaleDateString() : 'Not paid yet';
+            const isDelivered = order.isDelivered ? 'Delivered' : 'Processing';
+            const deliveredDate = order.isDelivered && order.deliveredAt ? new Date(order.deliveredAt).toLocaleDateString() : 'Not delivered yet';
+            
+            // Determine status class
+            const paidClass = order.isPaid ? 'status-paid' : 'status-pending';
+            const deliveredClass = order.isDelivered ? 'status-delivered' : 'status-pending';
+            
+            // Get user data for profile display
+            const userData = JSON.parse(localStorage.getItem('userData'));
+            const profilePic = localStorage.getItem('userProfilePic');
+            const userInitials = getInitials(userData ? userData.name : '');
+            
+            // Generate user info HTML
+            let userInfoHTML = '';
+            if (userData) {
+                userInfoHTML = `
+                    <div class="user-info">
+                        <div class="avatar-container">
+                            ${profilePic ? 
+                                `<img src="${profilePic}" alt="${userData.name}">` : 
+                                userInitials
+                            }
+                        </div>
+                        <div class="user-details">
+                            <h3>${userData.name}</h3>
+                            <p>${userData.email}</p>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            // Ensure orderItems exists and is an array
+            const orderItems = Array.isArray(order.orderItems) ? order.orderItems : [];
+            
+            // Generate HTML for order items
+            let itemsHtml = '';
+            orderItems.forEach(item => {
+                const itemPrice = item.price || 0;
+                const itemQuantity = item.quantity || 1;
+                const subtotal = itemPrice * itemQuantity;
+                
+                itemsHtml += `
+                    <tr>
+                        <td data-label="Product">
+                            <div class="product-info">
+                                <img src="${item.image || 'img/products/placeholder.jpg'}" alt="${item.name || 'Product'}">
+                                <div>
+                                    <h4>${item.name || 'Product'}</h4>
+                                </div>
+                            </div>
+                        </td>
+                        <td data-label="Price">$${itemPrice.toFixed(2)}</td>
+                        <td data-label="Quantity">${itemQuantity}</td>
+                        <td data-label="Subtotal">$${subtotal.toFixed(2)}</td>
+                    </tr>
+                `;
+            });
+            
+            // Ensure price values exist or default to 0
+            const itemsPrice = typeof order.itemsPrice === 'number' ? order.itemsPrice : 0;
+            const shippingPrice = typeof order.shippingPrice === 'number' ? order.shippingPrice : 0;
+            const taxPrice = typeof order.taxPrice === 'number' ? order.taxPrice : 0;
+            const totalPrice = typeof order.totalPrice === 'number' ? order.totalPrice : 
+                               (itemsPrice + shippingPrice + taxPrice);
+            
+            // Build HTML
+            container.innerHTML = `
+                ${userInfoHTML}
+                
+                <div class="order-header">
+                    <div>
+                        <h2>Order #${order._id || 'Unknown'}</h2>
+                        <p>Placed on ${orderDate}</p>
+                    </div>
+                    <div>
+                        <span class="order-status ${paidClass}">${isPaid}</span>
+                        <span class="order-status ${deliveredClass}">${isDelivered}</span>
+                    </div>
+                </div>
+                
+                <div class="order-details">
+                    <div class="shipping-info">
+                        <h3>Shipping Address</h3>
+                        ${order.shippingAddress ? `
+                            <p>${order.shippingAddress.address || ''}</p>
+                            <p>${order.shippingAddress.city || ''}, ${order.shippingAddress.postalCode || ''}</p>
+                            <p>${order.shippingAddress.country || ''}</p>
+                        ` : '<p>No shipping address available</p>'}
+                    </div>
+                    
+                    <div class="payment-info">
+                        <h3>Payment Information</h3>
+                        <p><strong>Method:</strong> ${order.paymentMethod || 'Not specified'}</p>
+                        <p><strong>Status:</strong> ${isPaid}</p>
+                        <p><strong>Date:</strong> ${paidDate}</p>
+                        <p><strong>Delivery Status:</strong> ${isDelivered}</p>
+                        <p><strong>Delivery Date:</strong> ${deliveredDate}</p>
+                    </div>
+                </div>
+                
+                <div class="order-items">
+                    <h3>Order Items</h3>
+                    ${orderItems.length > 0 ? `
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Price</th>
+                                    <th>Quantity</th>
+                                    <th>Subtotal</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${itemsHtml}
+                            </tbody>
+                        </table>
+                    ` : '<p>No items in this order</p>'}
+                </div>
+                
+                <div class="order-summary">
+                    <h3>Order Summary</h3>
+                    <table>
+                        <tr>
+                            <td>Items:</td>
+                            <td>$${itemsPrice.toFixed(2)}</td>
+                        </tr>
+                        <tr>
+                            <td>Shipping:</td>
+                            <td>$${shippingPrice.toFixed(2)}</td>
+                        </tr>
+                        <tr>
+                            <td>Tax:</td>
+                            <td>$${taxPrice.toFixed(2)}</td>
+                        </tr>
+                        <tr>
+                            <td>Total:</td>
+                            <td>$${totalPrice.toFixed(2)}</td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <a href="profile.html" class="back-button">Back to Profile</a>
+            `;
+        }
+        
+        // Helper function to get initials from a name
+        function getInitials(name) {
+            if (!name) return '?';
+            
+            const nameParts = name.trim().split(' ');
+            if (nameParts.length === 1) {
+                return nameParts[0].charAt(0).toUpperCase();
+            } else {
+                return (nameParts[0].charAt(0) + nameParts[nameParts.length - 1].charAt(0)).toUpperCase();
+            }
+        }
+    </script>
+</body>
+
+</html> 
