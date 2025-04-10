@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lume-Ecommerce-Order Confirmation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="responsive-styles.css">
+    <style>
+        .confirmation-container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 30px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        .confirmation-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .confirmation-header i {
+            font-size: 60px;
+            color: #27ae60;
+            margin-bottom: 20px;
+        }
+
+        .confirmation-header h2 {
+            color: #088178;
+            margin-bottom: 10px;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            margin: 30px 0;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e1e1e1;
+        }
+
+        .user-info .avatar-container {
+            width: clamp(45px, 3vw, 60px);
+            height: clamp(45px, 3vw, 60px);
+            border-radius: 50%;
+            overflow: hidden;
+            background-color: #088178;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: clamp(16px, 1.5vw, 22px);
+            font-weight: bold;
+            margin-right: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .user-info .avatar-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .user-info .user-details {
+            flex: 1;
+        }
+
+        .user-info .user-details h3 {
+            margin: 0 0 5px 0;
+            font-size: 18px;
+            color: #333;
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .user-info .user-details p {
+            margin: 0;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .order-details {
+            margin-top: 40px;
+        }
+
+        .order-details h3 {
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e1e1e1;
+            color: #088178;
+        }
+
+        .detail-row {
+            display: flex;
+            margin-bottom: 15px;
+        }
+
+        .detail-label {
+            font-weight: 600;
+            width: 150px;
+        }
+
+        .detail-value {
+            flex: 1;
+        }
+
+        .order-items {
+            margin-top: 30px;
+        }
+
+        .order-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed #e1e1e1;
+        }
+
+        .item-image {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            margin-right: 15px;
+        }
+
+        .item-details {
+            flex: 1;
+        }
+
+        .item-name {
+            font-weight: 600;
+        }
+
+        .item-price {
+            font-weight: 600;
+            text-align: right;
+        }
+
+        .order-summary {
+            margin-top: 30px;
+            background: #f7f8f9;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .summary-row.total {
+            font-weight: 700;
+            font-size: 18px;
+            padding-top: 10px;
+            margin-top: 10px;
+            border-top: 1px solid #e1e1e1;
+        }
+
+        .actions {
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .actions button {
+            padding: 12px 25px;
+            background-color: #088178;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin: 0 10px;
+        }
+
+        .actions button:hover {
+            background-color: #066a63;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 50px;
+        }
+
+        .error-message {
+            color: #e74c3c;
+            text-align: center;
+            padding: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- navbar section -->
+    <section id="header">
+        <a href="#"><img src="img/logo1.png" alt="logo" class="logo"></a>
+        <div>
+            <ul id="navbar">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li id="search-container">
+                    <div class="search-wrapper">
+                        <input type="text" id="search-input" placeholder="Search products...">
+                        <div id="search-suggestions"></div>
+                    </div>
+                    <a href="#" id="search-icon"><i class="fa-solid fa-magnifying-glass"></i></a>
+                </li>
+                <li id="lg-bag"><a href="cart.html"><i class="fa-solid fa-bag-shopping"></i></a></li>
+                <a href="#" id="close"><i class="fa-solid fa-xmark"></i></a>
+            </ul>
+        </div>
+        <div id="mobile">
+            <a href="cart.html"><i class="fa-solid fa-bag-shopping"></i></a>
+            <i id="bar" class="fas fa-outdent"></i>
+        </div>
+    </section>
+
+    <!-- Page Header -->
+    <section id="page-header" class="about-header">
+        <h2>#orderconfirmation</h2>
+        <p>Thank you for your purchase!</p>
+    </section>
+
+    <!-- Order Confirmation Section -->
+    <section id="order-confirmation" class="section-p1">
+        <div id="loading" class="loading">
+            <p>Loading order details...</p>
+        </div>
+        <div id="error-message" class="error-message" style="display: none;"></div>
+        <div id="confirmation-container" class="confirmation-container" style="display: none;">
+            <div class="confirmation-header">
+                <i class="fas fa-check-circle"></i>
+                <h2>Order Confirmed!</h2>
+                <p>Your order has been placed successfully.</p>
+            </div>
+
+            <!-- User info will be dynamically populated -->
+            <div class="user-info"></div>
+
+            <div class="order-details">
+                <h3>Order Information</h3>
+                <div class="detail-row">
+                    <div class="detail-label">Order ID:</div>
+                    <div id="order-id" class="detail-value"></div>
+                </div>
+                <div class="detail-row">
+                    <div class="detail-label">Date Placed:</div>
+                    <div id="order-date" class="detail-value"></div>
+                </div>
+                <div class="detail-row">
+                    <div class="detail-label">Payment Method:</div>
+                    <div id="payment-method" class="detail-value"></div>
+                </div>
+                <div class="detail-row">
+                    <div class="detail-label">Shipping Address:</div>
+                    <div id="shipping-address" class="detail-value"></div>
+                </div>
+            </div>
+
+            <div class="order-items">
+                <h3>Order Items</h3>
+                <div id="items-container"></div>
+            </div>
+
+            <div class="order-summary">
+                <div class="summary-row">
+                    <div>Subtotal:</div>
+                    <div id="subtotal"></div>
+                </div>
+                <div class="summary-row">
+                    <div>Shipping:</div>
+                    <div id="shipping"></div>
+                </div>
+                <div class="summary-row">
+                    <div>Tax:</div>
+                    <div id="tax"></div>
+                </div>
+                <div class="summary-row total">
+                    <div>Total:</div>
+                    <div id="total"></div>
+                </div>
+            </div>
+
+            <div class="actions">
+                <button onclick="window.location.href='shop.html'">Continue Shopping</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section id="newsLetter" class="section-p1 section-m1">
+        <div class="newsText">
+            <h4>Sign Up for NewsLetter</h4>
+            <p>Get Email updates for our latest Shop and <span>Special Offers.</span></p>
+        </div>
+        <div class="form">
+            <input type="text" placeholder="your email address">
+            <button class="normal">Sign Up</button>
+        </div>
+    </section>
+
+    <!-- Footer section -->
+    <section id="footer" class="section-m1">
+        <div class="top-section">
+            <div class="location">
+                <h4>Popular location</h4>
+                <a href="#">Kathmandu</a>
+                <a href="#">Nepalgunj</a>
+                <a href="#">Chitwan</a>
+                <a href="#">Pokhara</a>
+            </div>
+            <div class="Trending-location">
+                <h4>Trending location</h4>
+                <a href="#">Birgunj</a>
+                <a href="#">Rautahat</a>
+                <a href="#">Biratnagar</a>
+                <a href="#">jankapur</a>
+            </div>
+            <div class="about-us">
+                <h4>About Us</h4>
+                <a href="#">Tech@lume</a>
+            </div>
+
+            <div class="lume">
+                <h4>lume</h4>
+                <a href="#">Shop</a>
+                <a href="#">Blog</a>
+                <a href="#">Help</a>
+                <a href="#">Location</a>
+                <a href="#">Legal & privacy information</a>
+            </div>
+
+            <div class="follow-us">
+                <h4>Follow Us</h4>
+                <div class="icon">
+                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <!-- Copyright section -->
+        <div class="copyright">
+            <p>&copy; 2025, Lume - Ecommerce</p>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if user is logged in
+            const token = localStorage.getItem('userToken');
+            if (!token) {
+                window.location.href = 'login.html?redirect=order-confirmation.html';
+                return;
+            }
+            
+            // Get order ID from URL or localStorage
+            const urlParams = new URLSearchParams(window.location.search);
+            const orderId = urlParams.get('id') || JSON.parse(localStorage.getItem('lastOrder'))?._id;
+            
+            if (!orderId) {
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('error-message').textContent = 'No order information found';
+                document.getElementById('error-message').style.display = 'block';
+                return;
+            }
+            
+            // Fetch order details
+            fetchOrderDetails(orderId);
+        });
+        
+        async function fetchOrderDetails(orderId) {
+            try {
+                const token = localStorage.getItem('userToken');
+                const response = await fetch(`http://localhost:5050/api/orders/${orderId}`, {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+                
+                if (!response.ok) {
+                    throw new Error('Failed to load order details');
+                }
+                
+                const order = await response.json();
+                
+                // Display order details
+                displayOrderDetails(order);
+                
+                // Hide loading
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('confirmation-container').style.display = 'block';
+                
+            } catch (error) {
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('error-message').textContent = error.message;
+                document.getElementById('error-message').style.display = 'block';
+            }
+        }
+        
+        function displayOrderDetails(order) {
+            // Check if order exists
+            if (!order) {
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('error-message').textContent = 'Invalid order data received';
+                document.getElementById('error-message').style.display = 'block';
+                document.getElementById('confirmation-container').style.display = 'none';
+                return;
+            }
+            
+            const container = document.getElementById('confirmation-container');
+            
+            // Get user data
+            let userData = null;
+            try {
+                userData = JSON.parse(localStorage.getItem('userData'));
+            } catch (e) {
+                console.error('Error parsing user data:', e);
+            }
+            
+            const profilePic = localStorage.getItem('userProfilePic');
+            const userInitials = getInitials(userData ? userData.name : '');
+                
+            // Update user info section
+            const userInfoSection = container.querySelector('.user-info');
+            if (userInfoSection && userData) {
+                userInfoSection.innerHTML = `
+                    <div class="avatar-container">
+                        ${profilePic ? 
+                            `<img src="${profilePic}" alt="${userData.name}">` : 
+                            userInitials
+                        }
+                    </div>
+                    <div class="user-details">
+                        <h3>${userData.name || 'User'}</h3>
+                        <p>${userData.email || ''}</p>
+                    </div>
+                `;
+            }
+            
+            // Update order details
+            const orderIdElement = container.querySelector('#order-id');
+            const orderDateElement = container.querySelector('#order-date');
+            const orderStatusElement = container.querySelector('#order-status');
+            const shippingAddressElement = container.querySelector('#shipping-address');
+            const paymentMethodElement = container.querySelector('#payment-method');
+            
+            if (orderIdElement) orderIdElement.textContent = order._id || 'Unknown';
+            
+            if (orderDateElement) {
+                try {
+                    if (order.createdAt) {
+                        orderDateElement.textContent = new Date(order.createdAt).toLocaleDateString();
+                    } else {
+                        orderDateElement.textContent = 'Unknown date';
+                    }
+                } catch (e) {
+                    orderDateElement.textContent = 'Unknown date';
+                }
+            }
+            
+            if (orderStatusElement) orderStatusElement.textContent = order.isPaid ? 'Paid' : 'Pending Payment';
+            
+            if (shippingAddressElement) {
+                if (order.shippingAddress) {
+                    const address = order.shippingAddress.address || '';
+                    const city = order.shippingAddress.city || '';
+                    const postalCode = order.shippingAddress.postalCode || '';
+                    const country = order.shippingAddress.country || '';
+                    
+                    shippingAddressElement.textContent = `${address}, ${city}, ${postalCode}, ${country}`.replace(/,\s+,/g, ',').replace(/^,\s+/, '').replace(/,\s+$/, '');
+                } else {
+                    shippingAddressElement.textContent = 'No shipping address available';
+                }
+            }
+            
+            if (paymentMethodElement) paymentMethodElement.textContent = order.paymentMethod || 'Not specified';
+            
+            // Update order items
+            const orderItemsContainer = container.querySelector('#items-container');
+            if (orderItemsContainer) {
+                if (Array.isArray(order.orderItems) && order.orderItems.length > 0) {
+                    let itemsHTML = '';
+                    
+                    order.orderItems.forEach(item => {
+                        if (!item) return; // Skip invalid items
+                        
+                        const price = item.price || 0;
+                        const quantity = item.quantity || 0;
+                        const totalItemPrice = (price * quantity).toFixed(2);
+                        
+                        itemsHTML += `
+                            <div class="order-item">
+                                <img src="${item.image || ''}" alt="${item.name || 'Product'}" class="item-image">
+                                <div class="item-details">
+                                    <div class="item-name">${item.name || 'Unknown Product'}</div>
+                                    <div>Quantity: ${quantity}</div>
+                                </div>
+                                <div class="item-price">$${totalItemPrice}</div>
+                            </div>
+                        `;
+                    });
+                    
+                    orderItemsContainer.innerHTML = itemsHTML;
+                } else {
+                    orderItemsContainer.innerHTML = '<p>No items in this order</p>';
+                }
+            }
+            
+            // Update order summary
+            const subtotalElement = container.querySelector('#subtotal');
+            const shippingElement = container.querySelector('#shipping');
+            const taxElement = container.querySelector('#tax');
+            const totalElement = container.querySelector('#total');
+            
+            const itemsPrice = order.itemsPrice || 0;
+            const shippingPrice = order.shippingPrice || 0;
+            const taxPrice = order.taxPrice || 0;
+            const totalPrice = order.totalPrice || 0;
+            
+            if (subtotalElement) subtotalElement.textContent = `$${itemsPrice.toFixed(2)}`;
+            if (shippingElement) shippingElement.textContent = `$${shippingPrice.toFixed(2)}`;
+            if (taxElement) taxElement.textContent = `$${taxPrice.toFixed(2)}`;
+            if (totalElement) totalElement.textContent = `$${totalPrice.toFixed(2)}`;
+        }
+        
+        // Helper function to get initials from a name
+        function getInitials(name) {
+            if (!name) return '?';
+            
+            const nameParts = name.trim().split(' ');
+            if (nameParts.length === 1) {
+                return nameParts[0].charAt(0).toUpperCase();
+            } else {
+                return (nameParts[0].charAt(0) + nameParts[nameParts.length - 1].charAt(0)).toUpperCase();
+            }
+        }
+    </script>
+</body>
+
+</html> 
